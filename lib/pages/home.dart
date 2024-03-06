@@ -1,43 +1,37 @@
-import 'dart:html';
-import 'dart:ui';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:newsapp/models/category_model.dart'; // Importing CategoryModel
 import 'package:newsapp/services/data.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  const Home({Key? key});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  List<CategoryModel> categories = [];
 
-List <CategoryModel>  categories =[];
-@override
-void initState(){
-  categories = getCategories();
-   super.initState();
-
-}
-
+  @override
+  void initState() {
+    categories = getCategories();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-   return Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        title: const Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Buzz"),
             Text(
-              "Feed", 
+              "Feed",
               style: TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,
-              ), 
+              ),
             ),
           ],
         ),
@@ -45,43 +39,38 @@ void initState(){
         elevation: 0.0,
       ),
       body: Container(
-        child: Coloumn(childern:[
-          Container(child: ListView.builder,)
+        child: ListView.builder(
+          itemCount: categories.length,
+          itemBuilder: (context, index) {
+           return CategoryTitle(
+  image: categories[index].image ?? 'default_image.png',
+  categoryName: categories[index].categoryName ?? 'Uncategorized',
+);
 
-        ])
-
-
-
-
-
-      )
-
-
-
+          },
+        ),
+      ),
     );
   }
 }
+
 class CategoryTitle extends StatelessWidget {
-final image ,categoryName;
-CategoryTitle({this.categoryName,this.image});
+  final String image, categoryName;
+
+  CategoryTitle({required this.categoryName, required this.image});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-child:Stack(
-  children: [
-    Image.asset(image ,
-  width:120,
-  height:60,)
-  
-  
-  ],
-)
-
-
-
-
-
-
+      child: Stack(
+        children: [
+          Image.asset(
+            image,
+            width: 120,
+            height: 60,
+          ),
+        ],
+      ),
     );
   }
 }
