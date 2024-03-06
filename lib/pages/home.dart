@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:newsapp/services/data.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -13,6 +14,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+List <CategoryModel>  categories =[];
+@override
+void initState(){
+  categories = getCategories();
+   super.initState();
+
+}
+
+
   @override
   Widget build(BuildContext context) {
    return Scaffold(
@@ -33,6 +44,20 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 0.0,
       ),
+      body: Container(
+        child: Coloumn(childern:[
+          Container(child: ListView.builder,)
+
+        ])
+
+
+
+
+
+      )
+
+
+
     );
   }
 }

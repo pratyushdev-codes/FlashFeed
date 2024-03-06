@@ -24,8 +24,6 @@ List<CategoryModel> getCategories(){
   category.add(categoryModel);
   categoryModel = new CategoryModel();
 
-
-
   categoryModel.categoryName="Sports";
   categoryModel.image ="./images";
   category.add(categoryModel);
