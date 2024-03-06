@@ -1,23 +1,28 @@
+import 'dart:html';
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key key}) : super(key: key);
+  const Home({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+   return Scaffold(
       appBar: AppBar(
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Buzzz"),
             Text(
-              "Feed",
+              "Feed", 
               style: TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,
@@ -32,16 +37,26 @@ class _HomeState extends State<Home> {
   }
 }
 class CategoryTitle extends StatelessWidget {
-  final String categoryName;
-  final String image;
-
-  const CategoryTitle({Key key, this.categoryName, this.image}) : super(key: key);
-
+final image ,categoryName;
+CategoryTitle({this.categoryName,this.image});
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Stack(children: [
-        Image.asset(image)
-      ],
+child:Stack(
+  children: [
+    Image.asset(image ,
+  width:120,
+  height:60,)
+  
+  
+  ],
+)
+
+
+
+
+
+
+    );
   }
 }
