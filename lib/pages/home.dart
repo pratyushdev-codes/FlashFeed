@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
         title: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Buzzz"),
+            Text("Buzz"),
             Text(
               "Feed", 
               style: TextStyle(
