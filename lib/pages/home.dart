@@ -39,6 +39,7 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
       ),
       body: Container(
+        margin:EdgeInsets.only(left: 10.0),
         height:70,
         child: ListView.builder(
           shrinkWrap: true,
@@ -73,21 +74,21 @@ class CategoryTitle extends StatelessWidget {
             child: Image.asset(
               image,
               width: 120,
-              height: 60,
+              height: 70,
               fit: BoxFit.cover,
             ),
           ),
           Container(
             width: 120,
-            height: 60,
+            height: 70,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
-              color: Colors.black26,
+              color: Colors.black38,
             ),
             child: Center(
               child: Text(
                 categoryName,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),
               ),
             ),
           ),
