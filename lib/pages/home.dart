@@ -39,7 +39,10 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
       ),
       body: Container(
+        height:70,
         child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
           itemCount: categories.length,
           itemBuilder: (context, index) {
            return CategoryTitle(
