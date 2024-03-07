@@ -50,10 +50,10 @@ class _HomeState extends State<Home> {
   image: categories[index].image ?? 'default_image.png',
   categoryName: categories[index].categoryName ?? 'Uncategorized',
 );
-
           },
         ),
       ),
+      CarouselSlider.builder(itemCount: , itemBuilder:itemBuilder ,options: options)
     );
   }
 }
