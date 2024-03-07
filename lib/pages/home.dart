@@ -29,7 +29,10 @@ class _HomeState extends State<Home> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Buzz"),
+            Text(
+                "Buzz",
+                style:TextStyle(
+                    color: Colors.grey,)),
             Text(
               "Feed",
               style: TextStyle(
@@ -90,13 +93,13 @@ class CategoryTitle extends StatelessWidget {
             child: Image.asset(
               image,
               width: 120,
-              height: 70,
+              height: 75,
               fit: BoxFit.cover,
             ),
           ),
           Container(
             width: 120,
-            height: 70,
+            height: 75,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               color: Colors.black26,
@@ -131,7 +134,10 @@ class CategoryTitle extends StatelessWidget {
 
 Widget buildImage(String image , int index, String name)=>Container(
   margin:EdgeInsets.symmetric(horizontal: 5.0),
-  child:ClipRRect(
+  child:Stack(
+    children:[
+
+    ClipRRect(
     borderRadius: BorderRadius.circular(10),
   child:Image.asset(
     image ,
@@ -139,4 +145,10 @@ Widget buildImage(String image , int index, String name)=>Container(
 
   ),
   ),
+      Container(
+        margin:EdgeInsets.only(top:130.0),
+        // width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(color:Colors.black26, borderRadius: BorderRadius.only(bottomLeft:Radius.circular(20), bottomRight: Radius.circular(20) ,)),
+      )
+  ]),
 );
