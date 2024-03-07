@@ -1,37 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:newsapp/models/slider_model.dart';
+import 'package:newsapp/models/category_model.dart';
 
-List<SliderModel> getSlider() {
-  List<CategoryModel> categories = [];
 
-  CategoryModel categoryModel = CategoryModel(); // Use the constructor directly
+List<sliderModel> getSliders() {
+  List<sliderModel> slider = [];
+  sliderModel categoryModel = new sliderModel();
 
-  // Add categories
-  categoryModel.categoryName = "Business";
-  categoryModel.image = "./images/buisness.jpeg";
-  categories.add(categoryModel);
 
-  categoryModel = CategoryModel(); // Reinitialize for the next category
+// Create an instance of SliderModel
+categoryModel.image = "./images/ent.jpeg"; ;
+  categoryModel.name = "Bow to the authorities of Silenforce";
+  slider.add(categoryModel);
+  categoryModel = new sliderModel();
 
-  categoryModel.categoryName = "Entertainment";
-  categoryModel.image = "./images/ent.jpeg"; // Corrected image path
-  categories.add(categoryModel);
 
-  categoryModel = CategoryModel(); // Reinitialize for the next category
+  categoryModel.image = "./images/ent.jpeg";
+  categoryModel.name = "Bow to the authorities of Silenforce";
+  slider.add(categoryModel);
+  categoryModel = new sliderModel();
 
-  categoryModel.categoryName = "General";
-  categoryModel.image = "./images/general.jpeg"; // Corrected image path
-  categories.add(categoryModel);
 
-  categoryModel = CategoryModel(); // Reinitialize for the next category
+  categoryModel.image = "./images/business.jpeg";
+  categoryModel.name = "Bow to the authorities of Silenforce";
+  slider.add(categoryModel);
+  categoryModel = new sliderModel();
 
-  categoryModel.categoryName = "Health";
-  categoryModel.image = "./images/health.jpeg"; // Corrected image path
-  categories.add(categoryModel);
 
-  categoryModel = CategoryModel(); // Reinitialize for the next category
+  categoryModel.image = "./images/business.jpeg";
+  categoryModel.name = "Bow to the authorities of Silenforce";
+  slider.add(categoryModel);
+  categoryModel = new sliderModel();
 
-  categoryModel.categoryName = "Sports";
-  categoryModel.image = "./images/sports.jpeg"; // Corrected image path
-  categories.add(categoryModel);
+  // Repeat the above steps for the remaining items...
 
-  return categories; // Return the list of categories
+  return slider;
 }
