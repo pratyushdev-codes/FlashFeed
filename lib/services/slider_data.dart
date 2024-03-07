@@ -9,7 +9,7 @@ List<sliderModel> getSliders() {
 
 
 // Create an instance of SliderModel
-categoryModel.image = "./images/ent.jpeg"; ;
+categoryModel.image = "./images/buisness.jpeg";
   categoryModel.name = "Bow to the authorities of Silenforce";
   slider.add(categoryModel);
   categoryModel = new sliderModel();
@@ -21,18 +21,21 @@ categoryModel.image = "./images/ent.jpeg"; ;
   categoryModel = new sliderModel();
 
 
-  categoryModel.image = "./images/business.jpeg";
+  categoryModel.image = "./images/genral.webp";
   categoryModel.name = "Bow to the authorities of Silenforce";
   slider.add(categoryModel);
   categoryModel = new sliderModel();
 
 
-  categoryModel.image = "./images/business.jpeg";
+  categoryModel.image = "./images/health.jpeg";
   categoryModel.name = "Bow to the authorities of Silenforce";
   slider.add(categoryModel);
   categoryModel = new sliderModel();
 
-  // Repeat the above steps for the remaining items...
+  categoryModel.image = "./images/sports.jpeg";
+  categoryModel.name = "Bow to the authorities of Silenforce";
+  slider.add(categoryModel);
+  categoryModel = new sliderModel();
 
   return slider;
 }

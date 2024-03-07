@@ -58,6 +58,7 @@ class _HomeState extends State<Home> {
               },
             ),
           ),
+          SizedBox(height:30.0,),
           CarouselSlider.builder(
               itemCount: sliders.length,
               itemBuilder:(context, index, realIndex) {
@@ -66,7 +67,8 @@ class _HomeState extends State<Home> {
                 return buildImage(res!, index ,res1!);
               },
 
-              options:CarouselOptions(height: 200, viewportFraction: 1, enlargeCenterPage: true, enlargeStrategy: CenterPageEnlargeStrategy.height) )
+              options:CarouselOptions(
+                  height: 200, autoPlay: true,enlargeCenterPage: true, enlargeStrategy: CenterPageEnlargeStrategy.height) )
         ],
       ),
 
@@ -88,13 +90,13 @@ class CategoryTitle extends StatelessWidget {
             child: Image.asset(
               image,
               width: 120,
-              height: 60,
+              height: 70,
               fit: BoxFit.cover,
             ),
           ),
           Container(
             width: 120,
-            height: 60,
+            height: 70,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6),
               color: Colors.black26,
@@ -128,9 +130,13 @@ class CategoryTitle extends StatelessWidget {
 // }
 
 Widget buildImage(String image , int index, String name)=>Container(
+  margin:EdgeInsets.symmetric(horizontal: 5.0),
+  child:ClipRRect(
+    borderRadius: BorderRadius.circular(10),
   child:Image.asset(
     image ,
     fit:BoxFit.cover,
 
+  ),
   ),
 );

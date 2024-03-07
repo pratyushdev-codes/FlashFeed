@@ -13,13 +13,13 @@ List<CategoryModel> getCategories() {
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Entertainment";
-  categoryModel.image = "./images/ent.jpeg"; // Corrected image path
+  categoryModel.image = "./images/ent.jpeg";  // Corrected image path
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "General";
-  categoryModel.image = "./images/general.jpeg"; // Corrected image path
+  categoryModel.image = "./images/genral.webp"; // Corrected image path
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
