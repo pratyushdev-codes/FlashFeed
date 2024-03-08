@@ -115,7 +115,20 @@ class _HomeState extends State<Home> {
             ),
 
           ),
+          SizedBox(height: 10.0,),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(children: [
+              Container(
+                child: ClipRRect
+                
+                  (borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(("images/ent.jpeg"),height: 50,width: 150,fit: BoxFit.cover)),
 
+
+              )
+            ],),
+          )
         ],
       ),
 
