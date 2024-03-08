@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -65,9 +66,22 @@ class _HomeState extends State<Home> {
               },
             ),
           ),
-            SizedBox(height:1.0,),
-          Padding(padding: const EdgeInsets.only(left: 10)),
-          Text("Breaking News!", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold , fontSize: 18.0),),
+            SizedBox(height:10.0,),
+          Padding(
+
+              padding: const EdgeInsets.only(left: 10.0, right:10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Breaking News!", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold , fontSize: 18.0),),
+                  Text("View all", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.w500, fontSize: 16.0),),
+                ],
+              ),
+
+          ),
+          SizedBox(
+            height:20.0,),
+
           CarouselSlider.builder(
               itemCount: sliders.length,
               itemBuilder:(context, index, realIndex) {
@@ -85,7 +99,22 @@ class _HomeState extends State<Home> {
                   }
               ) ),
           SizedBox(height: 30.0,),
-          buildIndicator(),
+          Center(child : buildIndicator()),
+
+
+          SizedBox(height:10.0,),
+          Padding(
+
+            padding: const EdgeInsets.only(left: 10.0, right:10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Trending News", style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold , fontSize: 18.0),),
+                Text("View all", style: TextStyle(color: Colors.blue,fontWeight: FontWeight.w500, fontSize: 16.0),),
+              ],
+            ),
+
+          ),
 
         ],
       ),
