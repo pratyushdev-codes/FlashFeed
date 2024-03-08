@@ -7,6 +7,7 @@ import 'package:newsapp/services/data.dart';
 import 'package:newsapp/models/slider_model.dart';
 import 'package:newsapp/services/slider_data.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class Home extends StatefulWidget {
    const Home({Key? key});
   @override
@@ -15,6 +16,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<CategoryModel> categories = [];
   List<sliderModel> sliders =[];
+
+  int activeIndex= 0;
   @override
   void initState() {
     categories = getCategories();
@@ -61,7 +64,7 @@ class _HomeState extends State<Home> {
               },
             ),
           ),
-          SizedBox(height:30.0,),
+          SizedBox(height:25.0,),
           CarouselSlider.builder(
               itemCount: sliders.length,
               itemBuilder:(context, index, realIndex) {
@@ -71,7 +74,16 @@ class _HomeState extends State<Home> {
               },
 
               options:CarouselOptions(
-                  height: 200, autoPlay: true,enlargeCenterPage: true, enlargeStrategy: CenterPageEnlargeStrategy.height) )
+                  height: 200, autoPlay: true,enlargeCenterPage: true, enlargeStrategy: CenterPageEnlargeStrategy.height,
+                  onPageChanged: (index, reason){
+                    setState(() {
+                      activeIndex=index;
+                    });
+                  }
+              ) ),
+          SizedBox(height: 30.0,),
+          buildIndicator();
+
         ],
       ),
 
@@ -79,6 +91,12 @@ class _HomeState extends State<Home> {
   }
 
 }
+Widget buildIndicator()=>AnimatedSmoothIndicator(
+  activeIndex: activeIndex ,
+  count:sliders.length,
+
+
+);
 class CategoryTitle extends StatelessWidget {
   final String image, categoryName;
   CategoryTitle({required this.categoryName, required this.image});
@@ -89,19 +107,19 @@ class CategoryTitle extends StatelessWidget {
       child: Stack(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(360),
             child: Image.asset(
               image,
-              width: 120,
-              height: 75,
+              width: 135,
+              height: 45,
               fit: BoxFit.cover,
             ),
           ),
           Container(
-            width: 120,
-            height: 75,
+            width: 135,
+            height: 45,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(6),
+              borderRadius: BorderRadius.circular(360),
               color: Colors.black26,
             ),
             child: Center(
@@ -139,16 +157,28 @@ Widget buildImage(String image , int index, String name)=>Container(
 
     ClipRRect(
     borderRadius: BorderRadius.circular(10),
+
   child:Image.asset(
     image ,
     fit:BoxFit.cover,
 
+
   ),
   ),
       Container(
+        height:250,
+        padding:EdgeInsets.only(left:10.0),
         margin:EdgeInsets.only(top:130.0),
-        // width: MediaQuery.of(context).size.width,
+        // width: MediaQuery.of().size.width,
         decoration: BoxDecoration(color:Colors.black26, borderRadius: BorderRadius.only(bottomLeft:Radius.circular(20), bottomRight: Radius.circular(20) ,)),
+        child:Text(name, style:TextStyle(color:Colors.white , fontSize:16.0, fontWeight: FontWeight.w500),),
       )
   ]),
 );
+
+
+
+
+
+
+
