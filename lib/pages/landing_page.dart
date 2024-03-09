@@ -10,7 +10,20 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+  return Scaffold(
+    body:Container(child: Column(children: [
+     Image.asset("images/intro.webp"
+      width:MediaQuery.of(context).size.width,
+    )
+    ],),)
+
+
+
+
+
+
+  );
+
   }
 }
 

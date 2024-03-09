@@ -33,7 +33,9 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+
           children: [
+
             Text(
               "Buzz",
               style: TextStyle(
