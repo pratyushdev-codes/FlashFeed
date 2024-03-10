@@ -89,14 +89,24 @@ class _HomeState extends State<Home> {
                       fontSize: 18.0,
                     ),
                   ),
-                  Text(
-                    "View all",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.0,
+                  TextButton(
+
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () {// Add your onPressed action here
+                    },
+                    child: Text(
+                      "View all",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
+
+
                 ],
               ),
             ),
@@ -144,14 +154,23 @@ class _HomeState extends State<Home> {
                       fontSize: 18.0,
                     ),
                   ),
-                  Text(
-                    "View all",
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 16.0,
+                  TextButton(
+
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () {// Add your onPressed action here
+                    },
+                    child: Text(
+                      "View all",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16.0,
+                      ),
                     ),
                   ),
+                  
                 ],
               ),
             ),
