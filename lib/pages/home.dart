@@ -7,6 +7,7 @@ import 'package:newsapp/models/slider_model.dart';
 import 'package:newsapp/services/data.dart';
 import 'package:newsapp/services/slider_data.dart';
 
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -92,7 +93,7 @@ class _HomeState extends State<Home> {
                   TextButton(
 
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blueGrey),
                     ),
                     onPressed: () {// Add your onPressed action here
                     },
@@ -157,7 +158,7 @@ class _HomeState extends State<Home> {
                   TextButton(
 
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blueGrey),
                     ),
                     onPressed: () {// Add your onPressed action here
                     },
@@ -170,7 +171,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-                  
+
                 ],
               ),
             ),
