@@ -27,6 +27,10 @@ class _LandingPageState extends State<LandingPage> {
      ), SizedBox(height: 20.0),
           Text("News from around the\n    world for you", style: TextStyle(color: Colors.black , fontSize: 20.0 , fontWeight:FontWeight.bold )),
           Text("Best time to read , take your time to read a\n    litter more about this world", style: TextStyle(color: Colors.black45 , fontSize: 18.0 , fontWeight:FontWeight.w500 )),
+          Container(
+            decoration: BoxDecoration(color: Colors.blue),
+            child: Text("Get Started", style: TextStyle(color: Colors.white),),
+          )
 
     ],
       ),
