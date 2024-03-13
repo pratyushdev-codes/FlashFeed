@@ -10,33 +10,26 @@ import 'package:newsapp/services/slider_data.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
-
   @override
   State<Home> createState() => _HomeState();
 }
-
 class _HomeState extends State<Home> {
   List<CategoryModel> categories = [];
   List<sliderModel> sliders = [];
-
   int activeIndex = 0;
-
   @override
   void initState() {
     super.initState();
     categories = getCategories();
     sliders = getSliders();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: [
-
             Text(
               "Buzz",
               style: TextStyle(
@@ -52,6 +45,7 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
+
         centerTitle: true,
         elevation: 0.0,
       ),
@@ -91,7 +85,6 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                   TextButton(
-
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.blueGrey),
                     ),
@@ -106,8 +99,6 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
-
-
                 ],
               ),
             ),
@@ -338,8 +329,8 @@ class _HomeState extends State<Home> {
     activeIndex: activeIndex,
     count: sliders.length,
     effect: SlideEffect(
-      dotWidth: 15,
-      dotHeight: 14,
+      dotWidth: 10,
+      dotHeight: 10,
       activeDotColor: Colors.blue,
     ),
   );
