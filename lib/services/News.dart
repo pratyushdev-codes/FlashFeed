@@ -16,6 +16,17 @@ class News{
         if(element.['urlToImage']!=null && element.['description']){}
         ArticleModel articleModel = ArticleModel(
 
+        title:element['title'],
+        description:element['description'],
+        author:element['author'],
+        url:element['url'],
+        urlToImage:element['urlToImage'],
+        content:element['content'],
+
+
+       
+
+
         );
 
 
