@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/widgets.dart';
 import 'package:newsapp/models/article_model.dart';
+import 'package:newsapp/services/News.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/models/slider_model.dart';
@@ -18,6 +20,8 @@ class _HomeState extends State<Home> {
   List<CategoryModel> categories = [];
   List<sliderModel> sliders = [];
   List <ArticleModel> articles = [];
+  bool _loading= true;
+
   int activeIndex = 0;
   @override
   void initState() {
@@ -25,6 +29,22 @@ class _HomeState extends State<Home> {
     categories = getCategories();
     sliders = getSliders();
   }
+
+  getNew()async{
+    News newsclass = News();
+    await newsclass.getNews();
+    articles = newsclass.news;
+    setState(() {
+      _loading=false;
+
+
+    });
+
+
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -171,59 +191,68 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 12,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Material(
-                elevation: 3.0,
-                borderRadius: BorderRadius.circular(10),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 5.0,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            "images/sports.jpeg",
-                            height: 140,
-                            width: 140,
-                            fit: BoxFit.cover,
+
+
+
+
+            GestureDetector(
+              onTap: (){
+
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Material(
+                  elevation: 3.0,
+                  borderRadius: BorderRadius.circular(10),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 10.0,
+                      horizontal: 5.0,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.asset(
+                              "images/sports.jpeg",
+                              height: 140,
+                              width: 140,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(width: 5.0),
-                      Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            child: Text(
-                              "Rui Costa outsprints breakaway to win stage 15",
-                              style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.0,
+                        SizedBox(width: 5.0),
+                        Column(
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width / 2,
+                              child: Text(
+                                "Rui Costa outsprints breakaway to win stage 15",
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16.0,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 5.0),
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            child: Text(
-                              "Then here a short description",
-                              style: TextStyle(
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.0,
+                            SizedBox(height: 5.0),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 2,
+                              child: Text(
+                                "Then here a short description",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.0,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -375,5 +404,13 @@ class CategoryTitle extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+class BlogTitle extends StatelessWidget {
+  const BlogTitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
