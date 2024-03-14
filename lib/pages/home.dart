@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:newsapp/models/article_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/models/slider_model.dart';
@@ -16,6 +17,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<CategoryModel> categories = [];
   List<sliderModel> sliders = [];
+  List <ArticleModel> articles = [];
   int activeIndex = 0;
   @override
   void initState() {
