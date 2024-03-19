@@ -7,13 +7,13 @@ List<CategoryModel> getCategories() {
 
   // Add categories
   categoryModel.categoryName = "Business";
-  categoryModel.image = "./images/buisness.jpeg";
+  categoryModel.image = "./images/grey bg.jpeg";
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Entertainment";
-  categoryModel.image = "./images/ent.jpeg";  // Corrected image path
+  categoryModel.image = "./images/grey bg.jpeg";  // Corrected image path
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category

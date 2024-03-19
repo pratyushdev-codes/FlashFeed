@@ -9,7 +9,7 @@ import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/models/slider_model.dart';
 import 'package:newsapp/services/data.dart';
 import 'package:newsapp/services/slider_data.dart';
-import '../widgets/image_container.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
   @override
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 70,
+              height: 65,
               child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -89,32 +89,53 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
+
             SizedBox(
-              height: 10.0,
+              height: 5.0,
             ),
+             Padding(
+
+               padding:  const EdgeInsets.symmetric(horizontal:4.0),
+               child: Material(
+                 elevation: 3.0,
+                 borderRadius: BorderRadius.circular(30),
+                 child: ClipRRect(
+                   borderRadius: BorderRadius.circular(20),
+                   child: Image.asset("images/News of the Day.png",
+
+                     fit:BoxFit.cover,
+                   ),
+                 ),
+               ),
+             ),
+
+            SizedBox(
+              height: 20.0,
+            ),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Breaking News!",
+                    "Breaking News",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.black54,
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0,
                     ),
                   ),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blueGrey),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
                     ),
                     onPressed: () {// Add your onPressed action here
                     },
                     child: Text(
                       "Read More",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black38,
                         fontWeight: FontWeight.w500,
                         fontSize: 16.0,
                       ),
@@ -162,7 +183,7 @@ class _HomeState extends State<Home> {
                   Text(
                     "Trending News",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.black54,
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0,
                     ),
@@ -170,14 +191,14 @@ class _HomeState extends State<Home> {
                   TextButton(
 
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.blueGrey),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
                     ),
                     onPressed: () {// Add your onPressed action here
                     },
                     child: Text(
                       "View all",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black38,
                         fontWeight: FontWeight.w500,
                         fontSize: 16.0,
                       ),
@@ -410,25 +431,4 @@ class BlogTitle extends StatelessWidget {
     return const Placeholder();
   }
 }
-
-@override
-  Widget build(BuildContext context) {
-    return ImageContainer(
-      height: MediaQuery.of(context).size.height * 0.45,
-      width: double.infinity,
-      padding: const EdgeInsets.all(20.0),
-      imageUrl: "",
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.start,
-       
-          ),
-          
-
-          
-        
-        
-    
-    );
-  }
 
