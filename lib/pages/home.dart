@@ -356,7 +356,8 @@ class CategoryTitle extends StatelessWidget {
   }
 }
 class BlogTitle extends StatelessWidget {
-  const BlogTitle({super.key});
+  String imageUrl, title , desc;
+  BlogTitle({required this.desc , required this.title, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -379,8 +380,8 @@ class BlogTitle extends StatelessWidget {
                 Container(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.asset(
-                      "images/sports.jpeg",
+                    child: Image.network(
+                     imageUrl,
                       height: 140,
                       width: 140,
                       fit: BoxFit.cover,
@@ -393,7 +394,7 @@ class BlogTitle extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
-                        "Rui Costa outsprints breakaway to win stage 15",
+                        title,
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.w500,
@@ -405,7 +406,7 @@ class BlogTitle extends StatelessWidget {
                     Container(
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
-                        "Then here a short description",
+                        desc,
                         style: TextStyle(
                           color: Colors.black54,
                           fontWeight: FontWeight.w500,

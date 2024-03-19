@@ -19,19 +19,19 @@ List<CategoryModel> getCategories() {
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "General";
-  categoryModel.image = "./images/genral.webp"; // Corrected image path
+  categoryModel.image = "./images/grey bg.jpeg"; // Corrected image path
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Health";
-  categoryModel.image = "./images/health.jpeg"; // Corrected image path
+  categoryModel.image = "./images/grey.jpeg";
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Sports";
-  categoryModel.image = "./images/sports.jpeg"; // Corrected image path
+  categoryModel.image = "./images/grey bg.jpeg"; // Corrected image path
   categories.add(categoryModel);
   
   return categories; // Return the list of categories
