@@ -9,8 +9,7 @@ import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/models/slider_model.dart';
 import 'package:newsapp/services/data.dart';
 import 'package:newsapp/services/slider_data.dart';
-
-
+import '../widgets/image_container.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
   @override
@@ -113,7 +112,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {// Add your onPressed action here
                     },
                     child: Text(
-                      "View all",
+                      "Read More",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -191,9 +190,6 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 12,
             ),
-
-
-
 
             GestureDetector(
               onTap: (){
@@ -414,3 +410,25 @@ class BlogTitle extends StatelessWidget {
     return const Placeholder();
   }
 }
+
+@override
+  Widget build(BuildContext context) {
+    return ImageContainer(
+      height: MediaQuery.of(context).size.height * 0.45,
+      width: double.infinity,
+      padding: const EdgeInsets.all(20.0),
+      imageUrl: "",
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+       
+          ),
+          
+
+          
+        
+        
+    
+    );
+  }
+
