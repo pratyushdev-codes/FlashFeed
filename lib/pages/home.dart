@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
                   ),
                   TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white60),
                     ),
                     onPressed: () {// Add your onPressed action here
                     },
