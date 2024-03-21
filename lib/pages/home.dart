@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -9,7 +10,7 @@ import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/models/slider_model.dart';
 import 'package:newsapp/services/data.dart';
 import 'package:newsapp/services/slider_data.dart';
-import 'package:newsapp/widgets/bottom_nav_bar.dart';
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -267,7 +268,7 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: articles.length,itemBuilder: (context, index){
-                return BlogTitle(desc: articles[index].description!, title: articles[index].title!, imageUrl: articles[index].url!);
+                return BlogTitle(desc: articles[index].description!, title: articles[index].title!, imageUrl: articles[index].urlToImage!);
 
               },),
 
@@ -277,7 +278,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
   Widget buildImage(String image, int index, String name) => Container(
     margin: EdgeInsets.symmetric(horizontal: 5.0),
     child: Stack(
@@ -312,7 +312,6 @@ class _HomeState extends State<Home> {
       ],
     ),
   );
-
   Widget buildIndicator() => AnimatedSmoothIndicator(
     activeIndex: activeIndex,
     count: sliders.length,
@@ -323,12 +322,9 @@ class _HomeState extends State<Home> {
     ),
   );
 }
-
 class CategoryTitle extends StatelessWidget {
   final String image, categoryName;
-
   const CategoryTitle({Key? key, required this.categoryName, required this.image}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -366,7 +362,6 @@ class CategoryTitle extends StatelessWidget {
 class BlogTitle extends StatelessWidget {
   String imageUrl, title , desc;
   BlogTitle({required this.desc , required this.title, required this.imageUrl});
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -388,8 +383,8 @@ class BlogTitle extends StatelessWidget {
                 Container(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                     imageUrl,
+                    child: CachedNetworkImage(
+                      imageUrl: imageUrl,
                       height: 140,
                       width: 140,
                       fit: BoxFit.cover,
