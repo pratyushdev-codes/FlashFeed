@@ -26,6 +26,7 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
     categories = getCategories();
+    getNew();
     sliders = getSliders();
   }
 
@@ -60,11 +61,10 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-
         centerTitle: true,
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
+      body:_loading? Center(child: CircularProgressIndicator()): SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -83,7 +83,6 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
-
             SizedBox(
               height: 5.0,
             ),
@@ -264,6 +263,15 @@ class _HomeState extends State<Home> {
                 ),
               ),
             ),
+            Container(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: articles.length,itemBuilder: (context, index){
+                return BlogTitle(desc: articles[index].description!, title: articles[index].title!, imageUrl: articles[index].url!);
+
+              },),
+
+            )
           ],
         ),
       ),
