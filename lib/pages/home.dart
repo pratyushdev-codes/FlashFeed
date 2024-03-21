@@ -10,6 +10,9 @@ import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/models/slider_model.dart';
 import 'package:newsapp/services/data.dart';
 import 'package:newsapp/services/slider_data.dart';
+import 'package:intl/intl.dart';
+
+
 
 
 class Home extends StatefulWidget {
@@ -84,11 +87,22 @@ class _HomeState extends State<Home> {
                 },
               ),
             ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Let's dive into ${DateFormat('EEEE').format(DateTime.now())} headlines!",
+                  style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
             SizedBox(
-              height: 5.0,
+              height: 2.0,
             ),
              Padding(
-
                padding:  const EdgeInsets.symmetric(horizontal:4.0),
                child: Material(
                  elevation: 3.0,
@@ -117,7 +131,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
+                      fontSize: 20.0,
                     ),
                   ),
                   TextButton(
@@ -139,7 +153,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(
-              height: 20.0,
+              height: 8.0,
             ),
             CarouselSlider.builder(
               itemCount: sliders.length,
@@ -149,7 +163,7 @@ class _HomeState extends State<Home> {
                 return buildImage(res!, index, res1!);
               },
               options: CarouselOptions(
-                height: 200,
+                height: 180,
                 autoPlay: true,
                 enlargeCenterPage: true,
                 enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -161,7 +175,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             SizedBox(
-              height: 30.0,
+              height: 25.0,
             ),
             Center(
               child: buildIndicator(),
@@ -179,7 +193,7 @@ class _HomeState extends State<Home> {
                     style: TextStyle(
                       color: Colors.black54,
                       fontWeight: FontWeight.bold,
-                      fontSize: 18.0,
+                      fontSize: 20.0,
                     ),
                   ),
                   TextButton(
@@ -201,72 +215,15 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            SizedBox(
-              height: 12,
-            ),
 
 
-            SizedBox(height: 12),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Material(
-                elevation: 3.0,
-                borderRadius: BorderRadius.circular(10),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 10.0,
-                    horizontal: 5.0,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset(
-                            "images/sports.jpeg",
-                            height: 140,
-                            width: 140,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 5.0),
-                      Column(
-                        children: [
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            child: Text(
-                              "Another News Title",
-                              style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 5.0),
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            child: Text(
-                              "Another short description",
-                              style: TextStyle(
-                                color: Colors.black54,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14.0,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+
+            SizedBox(height:2),
+
             Container(
               child: ListView.builder(
                 shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
                 itemCount: articles.length,itemBuilder: (context, index){
                 return BlogTitle(desc: articles[index].description!, title: articles[index].title!, imageUrl: articles[index].urlToImage!);
 
@@ -275,6 +232,9 @@ class _HomeState extends State<Home> {
             )
           ],
         ),
+          ],
+      ),
+      
       ),
     );
   }
@@ -316,9 +276,9 @@ class _HomeState extends State<Home> {
     activeIndex: activeIndex,
     count: sliders.length,
     effect: SlideEffect(
-      dotWidth: 10,
-      dotHeight: 10,
-      activeDotColor: Colors.blue,
+      dotWidth: 9,
+      dotHeight: 9,
+      activeDotColor: Colors.blueAccent,
     ),
   );
 }
@@ -367,7 +327,8 @@ class BlogTitle extends StatelessWidget {
     return GestureDetector(
       onTap: (){
       },
-      child: Padding(
+      child:Container(
+        margin: EdgeInsets.only(bottom: 10.0),
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Material(
           elevation: 3.0,
@@ -386,7 +347,7 @@ class BlogTitle extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: imageUrl,
                       height: 140,
-                      width: 140,
+                      width: 145,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -398,6 +359,7 @@ class BlogTitle extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
                         title,
+                        maxLines: 2,
                         style: TextStyle(
                           color: Colors.blue,
                           fontWeight: FontWeight.w500,
@@ -410,6 +372,7 @@ class BlogTitle extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
                         desc,
+                        maxLines: 3,
                         style: TextStyle(
                           color: Colors.black54,
                           fontWeight: FontWeight.w500,

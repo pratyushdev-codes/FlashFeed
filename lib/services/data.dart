@@ -7,7 +7,7 @@ List<CategoryModel> getCategories() {
 
   // Add categories
   categoryModel.categoryName = "Business";
-  categoryModel.image = "./images/grey.jpeg";
+  categoryModel.image = "./images/health.jpeg";
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
@@ -31,7 +31,7 @@ List<CategoryModel> getCategories() {
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Sports";
-  categoryModel.image = "./images/grey bg.jpeg"; // Corrected image path
+  categoryModel.image = "./images/health.jpeg"; // Corrected image path
   categories.add(categoryModel);
   
   return categories; // Return the list of categories
