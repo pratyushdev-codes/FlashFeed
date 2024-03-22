@@ -181,7 +181,7 @@ class _HomeState extends State<Home> {
                           },
                           options: CarouselOptions(
                             height: 180,
-                            viewportFraction: 2,
+                            viewportFraction: 1,
                             autoPlay: true,
                             enlargeCenterPage: true,
                             enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -266,9 +266,10 @@ class _HomeState extends State<Home> {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: CachedNetworkImage(
-
+                imageUrl: image,
                 // height: 250,
-                fit: BoxFit.cover, imageUrl: 'image',
+                fit: BoxFit.cover,
+                width: MediaQuery.of(context).size.width,
               ),
             ),
             Container(
