@@ -264,12 +264,12 @@ class _HomeState extends State<Home> {
         onPressed: () {
           _scrollController.animateTo(
             0,
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds:600 ),
             curve: Curves.easeInOut,
           );
         },
         child: Icon(Icons.arrow_upward),
-        backgroundColor: Colors.blue, // FAB background color
+        backgroundColor: Colors.blueAccent, // FAB background color
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
