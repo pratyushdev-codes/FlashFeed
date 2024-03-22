@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
@@ -61,7 +63,8 @@ class _HomeState extends State<Home> {
     return Scaffold(
       drawer: NavBar(),
       appBar: AppBar(
-        backgroundColor: Colors.white70,
+        // backgroundColor: Color(0xFFECEFF1),
+        backgroundColor: Colors.black,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -69,7 +72,7 @@ class _HomeState extends State<Home> {
               child: Text(
                 "Buzz",
                 style: TextStyle(
-                  color: Colors.black54,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -120,7 +123,8 @@ class _HomeState extends State<Home> {
                       "Let's dive into ${DateFormat('EEEE').format(DateTime.now())}'s headlines!",
                       style: TextStyle(
                           fontSize: 20,
-                          color: Colors.black54,
+                          // color: Colors.black54,
+                          color: Colors.white70,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -155,23 +159,26 @@ class _HomeState extends State<Home> {
                       Text(
                         "Breaking News",
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white60,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                          fontSize: 22.0,
                         ),
+                      ),
+                      SizedBox(
+                        height: 8.0,
                       ),
                       TextButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.white60),
+                              Colors.white12),
                         ),
                         onPressed: () {
                           // Add your onPressed action here
                         },
                         child: Text(
-                          "Read More",
+                          "Read More ➜",
                           style: TextStyle(
-                            color: Colors.black38,
+                            color: Colors.white70,
                             fontWeight: FontWeight.w500,
                             fontSize: 16.0,
                           ),
@@ -212,6 +219,9 @@ class _HomeState extends State<Home> {
                 SizedBox(
                   height: 10.0,
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(
@@ -220,23 +230,23 @@ class _HomeState extends State<Home> {
                       Text(
                         "Trending News",
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white60,
                           fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
+                          fontSize: 22.0,
                         ),
                       ),
                       TextButton(
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.white),
+                              Colors.white12),
                         ),
                         onPressed: () {
                           // Add your onPressed action here
                         },
                         child: Text(
-                          "Read More",
+                          "Read More ➜",
                           style: TextStyle(
-                            color: Colors.black38,
+                            color: Colors.white70,
                             fontWeight: FontWeight.w500,
                             fontSize: 16.0,
                           ),
@@ -245,7 +255,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                SizedBox(height: 2),
+                SizedBox(height: 10),
                 Container(
                   child: ListView.builder(
                     shrinkWrap: true,
@@ -278,12 +288,14 @@ class _HomeState extends State<Home> {
     0,
     duration: Duration(milliseconds: 600),
     curve: Curves.easeInOut,
+
     );
     },
     child: Icon(Icons.arrow_upward),
     backgroundColor: Colors.blueAccent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(40.0),
+
       ),// FAB background color
     ),
     ),
@@ -390,7 +402,8 @@ class BlogTitle extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 10.0),
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: Material(
-          elevation: 3.0,
+          elevation: 1.5,
+          color: Colors.white10,
           borderRadius: BorderRadius.circular(10),
           child: Padding(
             padding: const EdgeInsets.symmetric(
@@ -433,7 +446,7 @@ class BlogTitle extends StatelessWidget {
                         desc,
                         maxLines: 3,
                         style: TextStyle(
-                          color: Colors.black54,
+                          color: Colors.white70,
                           fontWeight: FontWeight.w500,
                           fontSize: 14.0,
                         ),

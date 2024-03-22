@@ -13,9 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Buzz Feed',
+
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        // scaffoldBackgroundColor: Color(0xFFECEFF1),
+        scaffoldBackgroundColor: Colors.black,
         primarySwatch: Colors.grey,
       ),
       home: Scaffold(
