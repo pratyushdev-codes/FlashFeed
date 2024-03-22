@@ -337,7 +337,7 @@ class CategoryTitle extends StatelessWidget {
   }
 }
 
-class blgTitle extends StatelessWidget {
+class BlogTitle extends StatelessWidget {
   String imageUrl, title, desc, url;
   BlogTitle({required this.desc, required this.title, required this.imageUrl, required this.url});
   @override
