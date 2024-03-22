@@ -14,12 +14,36 @@ import 'package:webview_flutter/webview_flutter.dart';
  class _ArticleViewState extends State<ArticleView> {
    @override
    Widget build(BuildContext context) {
-     return Container(
+     return Scaffold(
+         appBar: AppBar(
+           backgroundColor: Colors.white70,
+           title: Row(
+             mainAxisAlignment: MainAxisAlignment.center,
+             children: [
+               Text(
+                 "Buzz",
+                 style: TextStyle(
+                   color: Colors.black54,
+                 ),
+               ),
+               Text(
+                 "Feed",
+                 style: TextStyle(
+                   color: Colors.blue,
+                   fontWeight: FontWeight.bold,
+                 ),
+               ),
+             ],
+           ),
+           centerTitle: true,
+           elevation: 0.0,
+         ),
+       body: Container(
        child: WebView(
          initialUrl:widget.blogUrl ,
          javascriptMode: JavascriptMode.unrestricted,
 
        ),
-     );
+     ));
    }
  }

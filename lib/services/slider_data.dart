@@ -1,41 +1,30 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http; // Don't forget to import the http package!
 import 'package:newsapp/models/slider_model.dart';
-import 'package:newsapp/models/category_model.dart';
 
+class Sliders {
+  List<sliderModel> sliders = [];
 
-List<sliderModel> getSliders() {
-  List<sliderModel> slider = [];
-  sliderModel categoryModel = new sliderModel();
+  Future<void> getSlider() async {
+    String url =
+        "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=e2e26edc65b74ec395ce51cd5ee6790c";
+    var response = await http.get(Uri.parse(url)); // Corrected the syntax here
 
-
-// Create an instance of SliderModel
-categoryModel.image = "./images/buisness.jpeg";
-  categoryModel.name = "Bow to the authorities of Silenforce";
-  slider.add(categoryModel);
-  categoryModel = new sliderModel();
-
-
-  categoryModel.image = "./images/ent.jpeg";
-  categoryModel.name = "Bow to the authorities of Silenforce";
-  slider.add(categoryModel);
-  categoryModel = new sliderModel();
-
-
-  categoryModel.image = "./images/genral.webp";
-  categoryModel.name = "Bow to the authorities of Silenforce";
-  slider.add(categoryModel);
-  categoryModel = new sliderModel();
-
-
-  categoryModel.image = "./images/health.jpeg";
-  categoryModel.name = "Bow to the authorities of Silenforce";
-  slider.add(categoryModel);
-  categoryModel = new sliderModel();
-
-  categoryModel.image = "./images/sports.jpeg";
-  categoryModel.name = "Bow to the authorities of Silenforce";
-  slider.add(categoryModel);
-  categoryModel = new sliderModel();
-
-  return slider;
+    var jsonData = jsonDecode(response.body);
+    if (jsonData['status'] == 'ok') {
+      jsonData['articles'].forEach((element) {
+        if (element['urlToImage'] != null && element['description'] != null) {
+          sliderModel slidermodel = sliderModel(
+            title: element['title'],
+            description: element['description'],
+            author: element['author'],
+            url: element['url'],
+            urlToImage: element['urlToImage'],
+            content: element['content'],
+          );
+          sliders.add(slidermodel); // Added the articleModel to the news list
+        }
+      });
+    }
+  }
 }

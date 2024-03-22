@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
     super.initState();
     categories = getCategories();
     getNew();
-    sliders = getSliders();
+    getSlider();
   }
 
   getNew() async {
@@ -40,6 +40,13 @@ class _HomeState extends State<Home> {
     setState(() {
       _loading = false;
     });
+  }
+
+
+  getSlider() async {
+    Sliders slider = Sliders();
+    await slider.getSlider();
+     sliders = slider.sliders;
   }
 
   @override
@@ -168,8 +175,8 @@ class _HomeState extends State<Home> {
                         CarouselSlider.builder(
                           itemCount: sliders.length,
                           itemBuilder: (context, index, realIndex) {
-                            String? res = sliders[index].image;
-                            String? res1 = sliders[index].name;
+                            String? res = sliders[index].urlToImage;
+                            String? res1 = sliders[index].title;
                             return buildImage(res!, index, res1!);
                           },
                           options: CarouselOptions(
@@ -258,9 +265,10 @@ class _HomeState extends State<Home> {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                image,
-                fit: BoxFit.cover,
+              child: CachedNetworkImage(
+
+                // height: 250,
+                fit: BoxFit.cover, imageUrl: 'image',
               ),
             ),
             Container(
