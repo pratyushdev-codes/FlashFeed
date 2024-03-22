@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
-class ArticleView extends StatefulWidget {
-  const ArticleView({super.key});
+import 'package:webview_flutter/webview_flutter.dart';
 
-  @override
-  State<ArticleView> createState() => _ArticleViewState();
-}
+ class ArticleView extends StatefulWidget {
 
-class _ArticleViewState extends State<ArticleView> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
-}
+   String blogUrl;
+   ArticleView({required this.blogUrl});
+
+
+   @override
+   State<ArticleView> createState() => _ArticleViewState();
+ }
+
+ class _ArticleViewState extends State<ArticleView> {
+   @override
+   Widget build(BuildContext context) {
+     return Container(
+       child: WebView(
+         initialUrl:widget.blogUrl ,
+         javascriptMode: JavascriptMode.unrestricted,
+
+       ),
+     );
+   }
+ }
