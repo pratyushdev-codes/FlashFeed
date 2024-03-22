@@ -122,10 +122,10 @@ class _HomeState extends State<Home> {
                     child: Text(
                       "Let's dive into ${DateFormat('EEEE').format(DateTime.now())}'s headlines!",
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 24,
                           // color: Colors.black54,
                           color: Colors.white70,
-                          fontWeight: FontWeight.w600),
+                          fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
@@ -165,7 +165,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       SizedBox(
-                        height: 8.0,
+                        height: 10.0,
                       ),
                       TextButton(
                         style: ButtonStyle(
@@ -379,7 +379,7 @@ class CategoryTitle extends StatelessWidget {
             child: Center(
               child: Text(
                 categoryName,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white , fontSize: 15,fontWeight:FontWeight.w600),
               ),
             ),
           ),
@@ -424,7 +424,7 @@ class BlogTitle extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 5.0),
+                SizedBox(width: 9.0),
                 Column(
                   children: [
                     Container(
@@ -444,7 +444,7 @@ class BlogTitle extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2,
                       child: Text(
                         desc,
-                        maxLines: 3,
+                        maxLines: 5,
                         style: TextStyle(
                           color: Colors.white70,
                           fontWeight: FontWeight.w500,
