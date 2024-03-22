@@ -337,7 +337,7 @@ class CategoryTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 16),
+      margin: EdgeInsets.only(right: 8, left: 8),
       child: Stack(
         children: [
           ClipRRect(
