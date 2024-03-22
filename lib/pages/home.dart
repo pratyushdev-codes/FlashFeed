@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
+import 'package:newsapp/NavBar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:newsapp/models/article_model.dart';
 import 'package:newsapp/pages/article_view.dart';
@@ -58,29 +59,36 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
       appBar: AppBar(
         backgroundColor: Colors.white70,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              "Buzz",
-              style: TextStyle(
-                color: Colors.black54,
+            Center(
+              child: Text(
+                "Buzz",
+                style: TextStyle(
+                  color: Colors.black54,
+                ),
               ),
             ),
-            Text(
-              "Feed",
-              style: TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
+            Center(
+              child: Text(
+                "Feed",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],
+
         ),
         centerTitle: true,
         elevation: 0.0,
       ),
+
       body: _loading
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(

@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:newsapp/pages/home.dart';
-import 'pages/landing_page.dart';
+import 'package:newsapp/NavBar.dart'; // Import your NavBar widget
 
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Buzz Feed',
-        debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.grey,
       ),
-      home:const Home()
+      home: Scaffold(
+
+       // Set your NavBar widget as the drawer
+        body: const Home(),
+      ),
     );
-    
   }
 }
-
-
-
-
