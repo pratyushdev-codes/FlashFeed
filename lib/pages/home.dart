@@ -258,20 +258,28 @@ class _HomeState extends State<Home> {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 40,
+        height: 38,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _scrollController.animateTo(
-            0,
-            duration: Duration(milliseconds:600 ),
-            curve: Curves.easeInOut,
-          );
-        },
-        child: Icon(Icons.arrow_upward),
-        backgroundColor: Colors.blueAccent, // FAB background color
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    floatingActionButton: Container(
+    width: 100.0,
+    height: 40.0,
+
+    child: FloatingActionButton(
+    onPressed: () {
+    _scrollController.animateTo(
+    0,
+    duration: Duration(milliseconds: 600),
+    curve: Curves.easeInOut,
+    );
+    },
+    child: Icon(Icons.arrow_upward),
+    backgroundColor: Colors.blueAccent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(40.0),
+      ),// FAB background color
+    ),
+    ),
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
