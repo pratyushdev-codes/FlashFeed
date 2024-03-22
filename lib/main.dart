@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Buzz Feed',
         debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
         primarySwatch: Colors.grey,
       ),
       home:const Home()
