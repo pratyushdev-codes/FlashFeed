@@ -7,31 +7,31 @@ List<CategoryModel> getCategories() {
 
   // Add categories
   categoryModel.categoryName = "Business";
-  categoryModel.image = "./images/buss.jpeg";
+  categoryModel.image = "./images/buis.jpg";
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Entertainment";
-  categoryModel.image = "./images/grey bg.jpeg";  // Corrected image path
+  categoryModel.image = "./images/enter.jpeg";  // Corrected image path
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "General";
-  categoryModel.image = "./images/grey bg.jpeg"; // Corrected image path
+  categoryModel.image = "./images/gen.jpeg"; // Corrected image path
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Health";
-  categoryModel.image = "./images/grey.jpeg";
+  categoryModel.image = "./images/health.jpeg";
   categories.add(categoryModel);
   
   categoryModel = CategoryModel(); // Reinitialize for the next category
   
   categoryModel.categoryName = "Sports";
-  categoryModel.image = "./images/health.jpeg"; // Corrected image path
+  categoryModel.image = "./images/sport.jpg"; // Corrected image path
   categories.add(categoryModel);
   
   return categories; // Return the list of categories
