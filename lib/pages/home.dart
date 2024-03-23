@@ -13,6 +13,7 @@ import 'package:newsapp/services/data.dart';
 import 'package:newsapp/services/slider_data.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -64,7 +65,7 @@ class _HomeState extends State<Home> {
       drawer: NavBar(),
       appBar: AppBar(
 
-        // backgroundColor: Color(0xFFECEFF1),
+
         backgroundColor: Colors.black,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -89,8 +90,9 @@ class _HomeState extends State<Home> {
           ],
         ),
         centerTitle: true,
-        elevation: 0.0,
+        elevation: 3.0,
       ),
+
       body: _loading
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
