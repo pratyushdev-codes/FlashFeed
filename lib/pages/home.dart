@@ -65,22 +65,22 @@ class _HomeState extends State<Home> {
       drawer: NavBar(),
       appBar: AppBar(
 
-
         backgroundColor: Colors.black,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
               child: Text(
-                "Buzz",
+                "Flash",
                 style: TextStyle(
                   color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Center(
               child: Text(
-                "Feed",
+                "Feed.",
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
