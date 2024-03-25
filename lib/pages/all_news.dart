@@ -56,17 +56,11 @@ class _AllNewsState extends State<AllNews> {
             Text(
               '${widget.news} News',
               style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              "Feed.",
-              style: TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,
               ),
             ),
+
           ],
         ),
         centerTitle: true,
@@ -77,7 +71,7 @@ class _AllNewsState extends State<AllNews> {
       ),
       body: _loading
           ? Container(
-        margin: EdgeInsets.symmetric(horizontal: 10.0),
+
         child: Center(
           child: CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
@@ -119,29 +113,32 @@ class AllNewsSection extends StatelessWidget {
           MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url)),
         );
       },
-      child: Container(
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: CachedNetworkImage(
-                imageUrl: imageUrl,
-                width: MediaQuery.of(context).size.width,
-                height: 200,
-                fit: BoxFit.cover,
-                // Placeholder widget
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Container(
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
+                  fit: BoxFit.cover,
+                  // Placeholder widget
 
-                // Error widget
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                  // Error widget
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
               ),
-            ),
-            SizedBox(height: 10.0),
-            Text(title,
-                style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.w500)),
-            SizedBox(height: 7.0),
-            Text(description, style: TextStyle(color: Colors.white, fontSize: 15), maxLines: 3,),
-            SizedBox(height: 17.0),
-          ],
+              SizedBox(height: 10.0),
+              Text(title,
+                  style: TextStyle(color: Colors.blue, fontSize: 18, fontWeight: FontWeight.w500)),
+              SizedBox(height: 7.0),
+              Text(description, style: TextStyle(color: Colors.white, fontSize: 15), maxLines: 3,),
+              SizedBox(height: 17.0),
+            ],
+          ),
         ),
       ),
     );
