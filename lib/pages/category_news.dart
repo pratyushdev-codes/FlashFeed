@@ -1,74 +1,95 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newsapp/models/show_category.dart';
+import 'package:newsapp/services/show_category_news.dart';
+
 class CategoryNews extends StatefulWidget {
-  const CategoryNews({super.key});
+  final String name;
+
+  const CategoryNews({Key? key, required this.name}) : super(key: key);
 
   @override
   State<CategoryNews> createState() => _CategoryNewsState();
 }
 
 class _CategoryNewsState extends State<CategoryNews> {
-  String name;
-  CategoryNews({required this.name});
+  late List<ShowCategoryModel> categories;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    getNews();
+  }
+
+  Future<void> getNews() async {
+    ShowCategoryNews showCategoryNews = ShowCategoryNews();
+    await showCategoryNews.getCategoriesNews(widget.name);
+    setState(() {
+      categories = showCategoryNews.categories;
+      _loading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: AppBar(
-
         backgroundColor: Colors.black,
         title: Text(
-                 widget.name;
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Center(
-              child: Text(
-                "Feed.",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
+          widget.name,
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         centerTitle: true,
         elevation: 3.0,
       ),
-
-      body:Container(
-        child: Column(
-          children: [
-
-          ],
-        ),
+      body: _loading
+          ? Center(
+        child: CircularProgressIndicator(),
+      )
+          : ListView.builder(
+        shrinkWrap: true,
+        physics: ClampingScrollPhysics(),
+        itemCount: categories.length,
+        itemBuilder: (context, index) {
+          return ShowCategory(
+            imageUrl: categories[index].urlToImage!,
+            description: categories[index].description!,
+            title: categories[index].title!,
+          );
+        },
       ),
     );
   }
 }
 
 class ShowCategory extends StatelessWidget {
-String Image , desc, title;
-ShowCategory({required this.Image , required this.desc, required this.title});
+  final String imageUrl, description, title;
 
-
-
-
+  const ShowCategory({
+    Key? key,
+    required this.imageUrl,
+    required this.description,
+    required this.title,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(children: [
-        CachedNetworkImage(imageUrl: Image, width: MediaQuery.of(context).size.width,height: 200, fit: BoxFit.cover,),
-        Text(title),
-        Text(desc),
-      ],),
-
-
+      child: Column(
+        children: [
+          Image.network(
+            imageUrl,
+            width: MediaQuery.of(context).size.width,
+            height: 200,
+            fit: BoxFit.cover,
+          ),
+          Text(title),
+          Text(description),
+        ],
+      ),
     );
   }
 }

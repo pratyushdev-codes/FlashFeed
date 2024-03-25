@@ -6,6 +6,7 @@ import 'package:newsapp/NavBar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:newsapp/models/article_model.dart';
 import 'package:newsapp/pages/article_view.dart';
+import 'package:newsapp/pages/category_news.dart';
 import 'package:newsapp/services/News.dart';
 import 'package:newsapp/models/category_model.dart';
 import 'package:newsapp/models/slider_model.dart';
@@ -391,37 +392,45 @@ class CategoryTitle extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 8, left: 8),
-      child: Stack(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(360),
-            child: Image.asset(
-              image,
-              width: 135,
-              height: 45,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Container(
-            width: 135,
-            height: 45,
-            decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryNews(name:categoryName)));
+      },
+
+
+
+      child: Container(
+        margin: EdgeInsets.only(right: 8, left: 8),
+        child: Stack(
+          children: [
+            ClipRRect(
               borderRadius: BorderRadius.circular(360),
-              color: Colors.black26,
-            ),
-            child: Center(
-              child: Text(
-                categoryName,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600),
+              child: Image.asset(
+                image,
+                width: 135,
+                height: 45,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
-        ],
+            Container(
+              width: 135,
+              height: 45,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(360),
+                color: Colors.black26,
+              ),
+              child: Center(
+                child: Text(
+                  categoryName,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
