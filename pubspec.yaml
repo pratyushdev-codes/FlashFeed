@@ -1,4 +1,4 @@
-name: newsapp
+name: FlashFeed
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -73,19 +73,21 @@ flutter_launcher_icons:
 # The following section is specific to Flutter packages.
 flutter:
 
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   assets:
      - images/health.jpeg
-     - images/News of the Day.png
      - images/enter.jpeg
      - images/gen.jpeg
      - images/sport.jpg
      - images/buis.jpg
      - images/intro.jpeg
      - images/intro.gif
+     - images/News of the Day (1).png
+
 
 
 

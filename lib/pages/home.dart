@@ -2,16 +2,17 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
-import 'package:newsapp/NavBar.dart';
+import 'package:FlashFeed/NavBar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:newsapp/models/article_model.dart';
-import 'package:newsapp/pages/article_view.dart';
-import 'package:newsapp/pages/category_news.dart';
-import 'package:newsapp/services/News.dart';
-import 'package:newsapp/models/category_model.dart';
-import 'package:newsapp/models/slider_model.dart';
-import 'package:newsapp/services/data.dart';
-import 'package:newsapp/services/slider_data.dart';
+import 'package:FlashFeed/models/article_model.dart';
+import 'package:FlashFeed/pages/all_news.dart';
+import 'package:FlashFeed/pages/article_view.dart';
+import 'package:FlashFeed/pages/category_news.dart';
+import 'package:FlashFeed/services/News.dart';
+import 'package:FlashFeed/models/category_model.dart';
+import 'package:FlashFeed/models/slider_model.dart';
+import 'package:FlashFeed/services/data.dart';
+import 'package:FlashFeed/services/slider_data.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 
@@ -62,38 +63,34 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       drawer: NavBar(),
       appBar: AppBar(
-
         backgroundColor: Colors.black,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Center(
-              child: Text(
-                "Flash",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+            Text(
+              "Flash",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            Center(
-              child: Text(
-                "Feed.",
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
+            Text(
+              "Feed.",
+              style: TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
         ),
         centerTitle: true,
         elevation: 3.0,
+        iconTheme: IconThemeData(
+          color: Colors.white70, // Change the color of the back button icon
+        ),
       ),
-
       body: _loading
           ? Center(child: CircularProgressIndicator(
         valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
@@ -103,215 +100,199 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 65,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: categories.length,
-                itemBuilder: (context, index) {
-                  return CategoryTitle(
-                    image: categories[index].image ?? 'default_image.png',
-                    categoryName:
-                    categories[index].categoryName ?? 'Uncategorized',
-                  );
-                },
+          Container(
+          height: 65,
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: categories.length,
+            itemBuilder: (context, index) {
+              return CategoryTitle(
+                image: categories[index].image ?? 'default_image.png',
+                categoryName: categories[index].categoryName ?? 'Uncategorized',
+              );
+            },
+          ),
+        ),
+        Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+        Center(
+        child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(
+              fontSize: 19.5,
+              color: Colors.white70,
+              fontWeight: FontWeight.w700,
+            ),
+            children: [
+              TextSpan(
+                text: "Let's dive into ",
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RichText(
-                      text: TextSpan(
-                        style: TextStyle(
-                          fontSize: 19.5,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "Let's dive into ",
-                          ),
-                          TextSpan(
-                            text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
-                            style: TextStyle(
-                              color: Colors.blue, // Blue color for the day
-                            ),
-                          ),
-                          TextSpan(
-                            text: "headlines",
-                          ),
-                        ],
-                      ),
-                    ),
-
-                  ),
+              TextSpan(
+                text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
+                style: TextStyle(
+                  color: Colors.blue, // Blue color for the day
                 ),
-
-                SizedBox(
-                  height: 2.0,
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Material(
-                      elevation: 2.0,
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all( width: 0.0), // Add white border
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white12,
-                              blurRadius: 10.0, // Adjust the blur radius to your liking
-                              spreadRadius: 0.4, // Adjust the spread radius to your liking
-                              // Adjust the offset if needed
-                            ),
-                          ],
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(29),
-                          child: Image.asset(
-                            "images/News of the Day.png",
-                            fit: BoxFit.cover,
-                            height: 120,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-
-                SizedBox(
-                  height: 20.0,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Breaking News",
-                        style: TextStyle(
-                          color: Colors.white60,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22.0,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all<Color>(
-                              Colors.white12),
-                        ),
-                        onPressed: () {
-                          // Add your onPressed action here
-                        },
-                        child: Text(
-                          "Read More ➜",
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                CarouselSlider.builder(
-                  itemCount: sliders.length,
-                  itemBuilder: (context, index, realIndex) {
-                    String? res = sliders[index].urlToImage;
-                    String? res1 = sliders[index].title;
-                    return buildImage(res!, index, res1!);
+              ),
+              TextSpan(
+                text: "headlines",
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+    SizedBox(height: 2.0),
+    Center(
+    child: Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+    child: Material(
+    elevation: 2.0,
+    borderRadius: BorderRadius.circular(30),
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(30),
+    border: Border.all(width: 0.0), // Add white border
+    boxShadow: [
+    BoxShadow(
+    color: Colors.white12,
+    blurRadius: 10.0, // Adjust the blur radius to your liking
+    spreadRadius: 0.4, // Adjust the spread radius to your liking
+    // Adjust the offset if needed
+    ),
+    ],
+    ),
+    child: ClipRRect(
+    borderRadius: BorderRadius.circular(29),
+    child: Image.asset(
+    "images/News of the Day (1).png",
+    fit: BoxFit.cover,
+    height: 120,
+    ),
+    ),
+    ),
+    ),
+    ),
+    ),
+    SizedBox(height: 20.0),
+    Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+    Text(
+    "Breaking News",
+    style: TextStyle(
+    color: Colors.white60,
+    fontWeight: FontWeight.bold,
+    fontSize: 22.0,
+    ),
+    ),
+    TextButton(
+    style: ButtonStyle(
+    backgroundColor: MaterialStateProperty.all<Color>(Colors.white12),
+    ),
+    onPressed: () {
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => AllNews(news:"Breaking")),
+    );
+    },
+    child: Text(
+    "Read More ➜",
+    style: TextStyle(
+    color: Colors.white70,
+    fontWeight: FontWeight.w500,
+    fontSize: 16.0,
+    ),
+    ),
+    ),
+    ],
+    ),
+    ),
+    SizedBox(height: 8.0),
+    CarouselSlider.builder(
+    itemCount: sliders.length,
+    itemBuilder: (context, index, realIndex) {
+    String? res = sliders[index].urlToImage;
+    String? res1 = sliders[index].title;
+    return buildImage(res!, index, res1!);
+    },
+    options: CarouselOptions(
+    height: 200,
+    viewportFraction: 1,
+    autoPlay: true,
+    enlargeCenterPage: true,
+    enlargeStrategy: CenterPageEnlargeStrategy.height,
+    onPageChanged: (index, reason) {
+    setState(() {
+    activeIndex = index;
+    });
+    },
+    ),
+    ),
+    SizedBox(height: 25.0),
+    Center(
+    child: buildIndicator(),
+    ),
+    SizedBox(height: 10.0),
+    SizedBox(height: 10),
+    Padding(
+    padding: EdgeInsets.symmetric(horizontal: 10.0),
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+    Text(
+    "Trending News",
+    style: TextStyle(
+    color: Colors.white60,
+    fontWeight: FontWeight.bold,
+    fontSize: 22.0,
+    ),
+    ),
+      TextButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(Colors.white12),
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AllNews(news:"Trending")),
+          );
+        },
+        child: Text(
+          "Read More ➜",
+          style: TextStyle(
+            color: Colors.white70,
+            fontWeight: FontWeight.w500,
+            fontSize: 16.0,
+          ),
+        ),
+      ),
+    ],
+    ),
+    ),
+              SizedBox(height: 10),
+              Container(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: ClampingScrollPhysics(),
+                  itemCount: articles.length,
+                  itemBuilder: (context, index) {
+                    return BlogTitle(
+                      url: articles[index].url!,
+                      desc: articles[index].description!,
+                      title: articles[index].title!,
+                      imageUrl: articles[index].urlToImage!,
+                    );
                   },
-                  options: CarouselOptions(
-                    height: 200,
-                    viewportFraction: 1,
-                    autoPlay: true,
-                    enlargeCenterPage: true,
-                    enlargeStrategy: CenterPageEnlargeStrategy.height,
-                    onPageChanged: (index, reason) {
-                      setState(() {
-                        activeIndex = index;
-                      });
-                    },
-                  ),
                 ),
-                SizedBox(
-                  height: 25.0,
-                ),
-                Center(
-                  child: buildIndicator(),
-                ),
-                SizedBox(
-                  height: 10.0,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Trending News",
-                        style: TextStyle(
-                          color: Colors.white60,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22.0,
-                        ),
-                      ),
-                      TextButton(
-                        style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all<Color>(
-                              Colors.white12),
-                        ),
-                        onPressed: () {
-                          // Add your onPressed action here
-                        },
-                        child: Text(
-                          "Read More ➜",
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 16.0,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(height: 10),
-                Container(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: articles.length,
-                    itemBuilder: (context, index) {
-                      return BlogTitle(
-                          url: articles[index].url!,
-                          desc: articles[index].description!,
-                          title: articles[index].title!,
-                          imageUrl: articles[index].urlToImage!);
-                    },
-                  ),
-                )
-              ],
-            ),
+              ),
+            ],
+        ),
           ],
         ),
       ),
@@ -340,6 +321,7 @@ class _HomeState extends State<Home> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
+
   Widget buildImage(String image, int index, String name) => Container(
     margin: EdgeInsets.symmetric(horizontal: 5.0),
     child: Stack(
@@ -399,9 +381,6 @@ class CategoryTitle extends StatelessWidget {
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context)=>CategoryNews(name:categoryName)));
       },
-
-
-
       child: Container(
         margin: EdgeInsets.only(right: 8, left: 8),
         child: Stack(
@@ -440,18 +419,16 @@ class CategoryTitle extends StatelessWidget {
 }
 
 class BlogTitle extends StatelessWidget {
-  String imageUrl, title, desc, url;
-  BlogTitle(
-      {required this.desc,
-        required this.title,
-        required this.imageUrl,
-        required this.url});
+  final String imageUrl, title, desc, url;
+  const BlogTitle({Key? key, required this.desc, required this.title, required this.imageUrl, required this.url}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url)));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ArticleView(blogUrl: url)),
+        );
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 10.0),
@@ -461,10 +438,7 @@ class BlogTitle extends StatelessWidget {
           color: Colors.white10,
           borderRadius: BorderRadius.circular(10),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 10.0,
-              horizontal: 5.0,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -517,3 +491,4 @@ class BlogTitle extends StatelessWidget {
     );
   }
 }
+

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/pages/home.dart';
-import 'package:newsapp/widgets/custom_tag.dart';
+import 'package:FlashFeed/pages/home.dart';
+import 'package:FlashFeed/widgets/custom_tag.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LandingPage extends StatefulWidget {

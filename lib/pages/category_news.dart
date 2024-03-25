@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:newsapp/models/show_category.dart';
-import 'package:newsapp/pages/article_view.dart';
-import 'package:newsapp/services/show_category_news.dart';
+import 'package:cached_network_image/cached_network_image.dart'; // Import CachedNetworkImage
+import 'package:FlashFeed/models/show_category.dart';
+import 'package:FlashFeed/pages/article_view.dart';
+import 'package:FlashFeed/services/show_category_news.dart';
 
 class CategoryNews extends StatefulWidget {
   final String name;
@@ -48,6 +49,9 @@ class _CategoryNewsState extends State<CategoryNews> {
         ),
         centerTitle: true,
         elevation: 3.0,
+        iconTheme: IconThemeData(
+          color: Colors.white70, // Change the color of the back button icon
+        ),
       ),
       body: _loading
           ? Center(
@@ -56,7 +60,7 @@ class _CategoryNewsState extends State<CategoryNews> {
         ),
       )
           : Container(
-        margin: EdgeInsets.symmetric(horizontal: 10.0),
+        margin: EdgeInsets.symmetric(horizontal: 5.0),
         child: ListView.builder(
           controller: _scrollController,
           shrinkWrap: true,
@@ -121,11 +125,13 @@ class ShowCategory extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                imageUrl,
+              child: CachedNetworkImage( // Use CachedNetworkImage
+                imageUrl: imageUrl,
                 width: MediaQuery.of(context).size.width,
                 height: 200,
                 fit: BoxFit.cover,
+                // Placeholder widget
+                errorWidget: (context, url, error) => Icon(Icons.error), // Error widget
               ),
             ),
             SizedBox(height: 10.0),

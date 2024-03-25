@@ -1,4 +1,4 @@
-import 'package:newsapp/models/category_model.dart';
+import 'package:FlashFeed/models/category_model.dart';
 
 List<CategoryModel> getCategories() {
   List<CategoryModel> categories = [];

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newsapp/pages/home.dart';
-import 'package:newsapp/pages/landing_page.dart'; // Import your LandingPage widget
+import 'package:FlashFeed/pages/home.dart';
+import 'package:FlashFeed/pages/landing_page.dart'; // Import your LandingPage widget
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Buzz Feed',
+      title: 'FlashFeed',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.black,
