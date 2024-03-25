@@ -95,7 +95,9 @@ class _HomeState extends State<Home> {
       ),
 
       body: _loading
-          ? Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+      ))
           : SingleChildScrollView(
         controller: _scrollController,
         child: Column(
@@ -352,13 +354,14 @@ class _HomeState extends State<Home> {
         ),
         Container(
           height: 300,
+          width: MediaQuery.of(context).size.width,
           padding: EdgeInsets.only(left: 10.0),
           margin: EdgeInsets.only(top: 130.0),
           decoration: BoxDecoration(
             color: Colors.black26,
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+              bottomLeft: Radius.circular(10),
+              bottomRight: Radius.circular(10),
             ),
           ),
           child: Text(
