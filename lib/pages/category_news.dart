@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsapp/models/show_category.dart';
 import 'package:newsapp/services/show_category_news.dart';
@@ -38,28 +39,28 @@ class _CategoryNewsState extends State<CategoryNews> {
         title: Text(
           widget.name,
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.blue,
             fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
         elevation: 3.0,
       ),
-      body: _loading
-          ? Center(
-        child: CircularProgressIndicator(),
-      )
-          : ListView.builder(
-        shrinkWrap: true,
-        physics: ClampingScrollPhysics(),
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return ShowCategory(
-            imageUrl: categories[index].urlToImage!,
-            description: categories[index].description!,
-            title: categories[index].title!,
-          );
-        },
+      body: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10.0),
+
+          child: ListView.builder(
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          itemCount: categories.length,
+          itemBuilder: (context, index) {
+            return ShowCategory(
+              imageUrl: categories[index].urlToImage!,
+              description: categories[index].description!,
+              title: categories[index].title!,
+            );
+          },
+        ),
       ),
     );
   }
@@ -80,15 +81,23 @@ class ShowCategory extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Image.network(
-            imageUrl,
-            width: MediaQuery.of(context).size.width,
-            height: 200,
-            fit: BoxFit.cover,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+
+            child: Image.network(
+              imageUrl,
+              width: MediaQuery.of(context).size.width,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
           ),
-          Text(title),
-          Text(description),
+          SizedBox(height: 10.0),
+          Text(title, style: TextStyle(color: Colors.blue ,fontSize: 18 ,fontWeight: FontWeight.w500)),
+          SizedBox(height: 7.0),
+          Text(description ,style: TextStyle(color: Colors.white ,fontSize: 15,)),
+          SizedBox(height: 17.0),
         ],
+
       ),
     );
   }
