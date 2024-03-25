@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class CategoryNews extends StatefulWidget {
@@ -51,12 +52,21 @@ class _CategoryNewsState extends State<CategoryNews> {
 }
 
 class ShowCategory extends StatelessWidget {
-  const ShowCategory({super.key});
+String Image , desc, title;
+ShowCategory({required this.Image , required this.desc, required this.title});
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      CategoryModel:
+      child: Column(children: [
+        CachedNetworkImage(imageUrl: Image, width: MediaQuery.of(context).size.width,height: 200, fit: BoxFit.cover,),
+        Text(title),
+        Text(desc),
+      ],),
 
 
     );
