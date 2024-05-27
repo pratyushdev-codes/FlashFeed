@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share/share.dart';
 
 class NavBar extends StatelessWidget {
   @override
@@ -28,7 +29,10 @@ class NavBar extends StatelessWidget {
                 ListTile(
                   leading: Icon(Icons.share),
                   title: Text('Share'),
-                  onTap: () => null,
+                  onTap: () {
+                    // Share the URL when the share button is pressed
+                    Share.share('https://flashfeedweb.netlify.app', subject: 'Flash Feed - Stay Ahead of the Curve');
+                  },
                 ),
                 Divider(),
                 ListTile(
