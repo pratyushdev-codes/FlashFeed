@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             Text(
-              "Feed.",
+              "Feed",
               style: TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,

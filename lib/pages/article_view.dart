@@ -16,14 +16,15 @@ import 'package:webview_flutter/webview_flutter.dart';
    Widget build(BuildContext context) {
      return Scaffold(
          appBar: AppBar(
-           backgroundColor: Colors.white70,
+           backgroundColor: Colors.black,
            title: Row(
              mainAxisAlignment: MainAxisAlignment.center,
              children: [
                Text(
-                 "Buzz",
+                 "Flash",
                  style: TextStyle(
-                   color: Colors.black54,
+                   color: Colors.white,
+                   fontWeight: FontWeight.bold,
                  ),
                ),
                Text(
