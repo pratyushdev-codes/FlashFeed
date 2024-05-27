@@ -15,7 +15,6 @@ import 'package:FlashFeed/services/data.dart';
 import 'package:FlashFeed/services/slider_data.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -90,6 +89,18 @@ class _HomeState extends State<Home> {
         iconTheme: IconThemeData(
           color: Colors.white70, // Change the color of the back button icon
         ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.refresh, color: Colors.white70),
+            onPressed: () {
+              setState(() {
+                _loading = true;
+              });
+              getNew();
+              getSlider();
+            },
+          ),
+        ],
       ),
       body: _loading
           ? Center(child: CircularProgressIndicator(
@@ -100,199 +111,199 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          Container(
-          height: 65,
-          child: ListView.builder(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            itemBuilder: (context, index) {
-              return CategoryTitle(
-                image: categories[index].image ?? 'default_image.png',
-                categoryName: categories[index].categoryName ?? 'Uncategorized',
-              );
-            },
-          ),
-        ),
-        Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-        Center(
-        child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: RichText(
-          text: TextSpan(
-            style: TextStyle(
-              fontSize: 19.5,
-              color: Colors.white70,
-              fontWeight: FontWeight.w700,
+            Container(
+              height: 65,
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return CategoryTitle(
+                    image: categories[index].image ?? 'default_image.png',
+                    categoryName: categories[index].categoryName ?? 'Uncategorized',
+                  );
+                },
+              ),
             ),
-            children: [
-              TextSpan(
-                text: "Let's dive into ",
-              ),
-              TextSpan(
-                text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
-                style: TextStyle(
-                  color: Colors.blue, // Blue color for the day
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 19.5,
+                          color: Colors.white70,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Let's dive into ",
+                          ),
+                          TextSpan(
+                            text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
+                            style: TextStyle(
+                              color: Colors.blue, // Blue color for the day
+                            ),
+                          ),
+                          TextSpan(
+                            text: "headlines",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-              TextSpan(
-                text: "headlines",
-              ),
-            ],
-          ),
-        ),
-      ),
-    ),
-    SizedBox(height: 2.0),
-    Center(
-    child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-    child: Material(
-    elevation: 2.0,
-    borderRadius: BorderRadius.circular(30),
-    child: Container(
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(30),
-    border: Border.all(width: 0.0), // Add white border
-    boxShadow: [
-    BoxShadow(
-    color: Colors.white12,
-    blurRadius: 10.0, // Adjust the blur radius to your liking
-    spreadRadius: 0.4, // Adjust the spread radius to your liking
-    // Adjust the offset if needed
-    ),
-    ],
-    ),
-    child: ClipRRect(
-    borderRadius: BorderRadius.circular(29),
-    child: Image.asset(
-    "images/News of the Day (1).png",
-    fit: BoxFit.cover,
-    height: 120,
-    ),
-    ),
-    ),
-    ),
-    ),
-    ),
-    SizedBox(height: 20.0),
-    Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-    Text(
-    "Breaking News",
-    style: TextStyle(
-    color: Colors.white60,
-    fontWeight: FontWeight.bold,
-    fontSize: 22.0,
-    ),
-    ),
-    TextButton(
-    style: ButtonStyle(
-    backgroundColor: MaterialStateProperty.all<Color>(Colors.white12),
-    ),
-    onPressed: () {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => AllNews(news:"Breaking")),
-    );
-    },
-    child: Text(
-    "Read More ➜",
-    style: TextStyle(
-    color: Colors.white70,
-    fontWeight: FontWeight.w500,
-    fontSize: 16.0,
-    ),
-    ),
-    ),
-    ],
-    ),
-    ),
-    SizedBox(height: 8.0),
-    CarouselSlider.builder(
-    itemCount: sliders.length,
-    itemBuilder: (context, index, realIndex) {
-    String? res = sliders[index].urlToImage;
-    String? res1 = sliders[index].title;
-    return buildImage(res!, index, res1!);
-    },
-    options: CarouselOptions(
-    height: 200,
-    viewportFraction: 1,
-    autoPlay: true,
-    enlargeCenterPage: true,
-    enlargeStrategy: CenterPageEnlargeStrategy.height,
-    onPageChanged: (index, reason) {
-    setState(() {
-    activeIndex = index;
-    });
-    },
-    ),
-    ),
-    SizedBox(height: 25.0),
-    Center(
-    child: buildIndicator(),
-    ),
-    SizedBox(height: 10.0),
-    SizedBox(height: 10),
-    Padding(
-    padding: EdgeInsets.symmetric(horizontal: 10.0),
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-    Text(
-    "Trending News",
-    style: TextStyle(
-    color: Colors.white60,
-    fontWeight: FontWeight.bold,
-    fontSize: 22.0,
-    ),
-    ),
-      TextButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Colors.white12),
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AllNews(news:"Trending")),
-          );
-        },
-        child: Text(
-          "Read More ➜",
-          style: TextStyle(
-            color: Colors.white70,
-            fontWeight: FontWeight.w500,
-            fontSize: 16.0,
-          ),
-        ),
-      ),
-    ],
-    ),
-    ),
-              SizedBox(height: 10),
-              Container(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  physics: ClampingScrollPhysics(),
-                  itemCount: articles.length,
-                  itemBuilder: (context, index) {
-                    return BlogTitle(
-                      url: articles[index].url!,
-                      desc: articles[index].description!,
-                      title: articles[index].title!,
-                      imageUrl: articles[index].urlToImage!,
-                    );
+                SizedBox(height: 2.0),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Material(
+                      elevation: 2.0,
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(width: 0.0), // Add white border
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white12,
+                              blurRadius: 10.0, // Adjust the blur radius to your liking
+                              spreadRadius: 0.4, // Adjust the spread radius to your liking
+                              // Adjust the offset if needed
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(29),
+                          child: Image.asset(
+                            "images/News of the Day (1).png",
+                            fit: BoxFit.cover,
+                            height: 120,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Breaking News",
+                        style: TextStyle(
+                          color: Colors.white60,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22.0,
+                        ),
+                      ),
+                      TextButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white12),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => AllNews(news:"Breaking")),
+                          );
+                        },
+                        child: Text(
+                          "Read More ➜",
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 8.0),
+                CarouselSlider.builder(
+                  itemCount: sliders.length,
+                  itemBuilder: (context, index, realIndex) {
+                    String? res = sliders[index].urlToImage;
+                    String? res1 = sliders[index].title;
+                    return buildImage(res!, index, res1!);
                   },
+                  options: CarouselOptions(
+                    height: 200,
+                    viewportFraction: 1,
+                    autoPlay: true,
+                    enlargeCenterPage: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        activeIndex = index;
+                      });
+                    },
+                  ),
                 ),
-              ),
-            ],
-        ),
+                SizedBox(height: 25.0),
+                Center(
+                  child: buildIndicator(),
+                ),
+                SizedBox(height: 10.0),
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Trending News",
+                        style: TextStyle(
+                          color: Colors.white60,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22.0,
+                        ),
+                      ),
+                      TextButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white12),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => AllNews(news:"Trending")),
+                          );
+                        },
+                        child: Text(
+                          "Read More ➜",
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16.0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: ClampingScrollPhysics(),
+                    itemCount: articles.length,
+                    itemBuilder: (context, index) {
+                      return BlogTitle(
+                        url: articles[index].url!,
+                        desc: articles[index].description!,
+                        title: articles[index].title!,
+                        imageUrl: articles[index].urlToImage!,
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -442,15 +453,13 @@ class BlogTitle extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: CachedNetworkImage(
-                      imageUrl: imageUrl,
-                      height: 140,
-                      width: 145,
-                      fit: BoxFit.cover,
-                    ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    height: 140,
+                    width: 145,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 SizedBox(width: 9.0),
@@ -491,4 +500,3 @@ class BlogTitle extends StatelessWidget {
     );
   }
 }
-

@@ -13,7 +13,7 @@ class NavBar extends StatelessWidget {
           UserAccountsDrawerHeader(
             accountName: Padding(
               padding: const EdgeInsets.all(0.00001),
-              child: Text('Welcome, Pratyush !',style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30),),
+              child: Text('Welcome !',style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30),),
             ),
             accountEmail: Text(''),
 
@@ -21,8 +21,7 @@ class NavBar extends StatelessWidget {
               color: Colors.blue,
               image: DecorationImage(
                   fit: BoxFit.fitWidth,
-                  image: NetworkImage(
-                      'https://images.unsplash.com/photo-1508612761958-e931d843bdd5?q=80&w=2815&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')),
+                  image: AssetImage('images/navbarimg.jpeg')),
             ),
           ),
 
