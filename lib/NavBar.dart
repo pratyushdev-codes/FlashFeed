@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share/share.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NavBar extends StatelessWidget {
   @override
@@ -16,8 +17,10 @@ class NavBar extends StatelessWidget {
                     'Welcome',
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 30, color: Colors.white60),
                   ),
-                  accountEmail: Text('Breaking news, tailored just for you !', // Add your subheading text here
-                      style: TextStyle(fontSize: 18, color: Colors.grey)),
+                  accountEmail: Text(
+                    'Breaking news, tailored just for you!', // Add your subheading text here
+                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     image: DecorationImage(
@@ -31,23 +34,31 @@ class NavBar extends StatelessWidget {
                   title: Text('Share'),
                   onTap: () {
                     // Share the URL when the share button is pressed
-                    Share.share('https://flashfeedweb.netlify.app', subject: 'Flash Feed - Stay Ahead of the Curve');
+                    Share.share(
+                      'https://flashfeedweb.netlify.app',
+                      subject: 'Flash Feed - Stay Ahead of the Curve',
+                    );
                   },
                 ),
                 Divider(),
                 ListTile(
                   leading: Icon(Icons.description),
                   title: Text('Policies'),
-                  onTap: () => null,
+                  onTap: () {},
                 ),
                 Divider(),
                 ListTile(
                   leading: Icon(Icons.contact_phone), // Added contact icon
                   title: Text('Contact'),
-                  onTap: () => null,
+                  onTap: () async {
+                    const url = 'https://github.com/pratyushdev-codes/';
+                    if (await canLaunch(url)) {
+                      await launch(url);
+                    } else {
+                      throw 'Could not launch $url';
+                    }
+                  },
                 ),
-
-
               ],
             ),
           ),

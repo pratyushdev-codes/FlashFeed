@@ -234,7 +234,7 @@ class _HomeState extends State<Home> {
                   },
                   options: CarouselOptions(
                     height: 200,
-                    viewportFraction: 1,
+                    viewportFraction: 0.95,
                     autoPlay: true,
                     enlargeCenterPage: true,
                     enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -245,7 +245,7 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
-                SizedBox(height: 25.0),
+                SizedBox(height: 17.0),
                 Center(
                   child: buildIndicator(),
                 ),
