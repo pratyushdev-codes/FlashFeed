@@ -87,11 +87,11 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         elevation: 3.0,
         iconTheme: IconThemeData(
-          color: Colors.white70, // Change the color of the back button icon
+          color: Colors.white54, // Change the color of the back button icon
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh, color: Colors.white70),
+            icon: Icon(Icons.refresh, color: Colors.white54),
             onPressed: () {
               setState(() {
                 _loading = true;
