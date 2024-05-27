@@ -46,12 +46,8 @@ class NavBar extends StatelessWidget {
                   title: Text('Contact'),
                   onTap: () => null,
                 ),
-                Divider(), // Added divider for contact
-                ListTile(
-                  title: Text('Exit'),
-                  leading: Icon(Icons.exit_to_app),
-                  onTap: () => null,
-                ),
+
+
               ],
             ),
           ),
