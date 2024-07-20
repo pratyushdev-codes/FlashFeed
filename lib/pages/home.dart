@@ -30,7 +30,13 @@ class _HomeState extends State<Home> {
   bool _loading = true;
   int activeIndex = 0;
   final ScrollController _scrollController = ScrollController();
+ final LinearGradient _gradient= LinearGradient(colors: <Color>[
+   Colors.red,
 
+
+   Colors.blue.shade900,
+   Colors.orangeAccent,
+ ]);
   @override
   void initState() {
     super.initState();
@@ -248,17 +254,60 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 17.0),
                 Center(
-                  child: buildIndicator(),
-                ),
-                SizedBox(height: 10.0),
-                SizedBox(height: 10),
-                Center(
-                  child:SlideAction(onSubmit: (){
-                    
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 50.0, // Adjust this value to reduce the height of the slider
 
+                      child: SlideAction(
+                        elevation: 8.5,
+                        outerColor: Colors.white10,
+                        innerColor: Colors.white,
+                        textColor: Colors.transparent, // Make text color transparent
+                        text: "", // Remove text here
+                        textStyle: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.transparent, // This will be overridden by the ShaderMask
+                        ),
+                        sliderButtonIcon: Container(
+                          width: 10.0, // Adjust this value to reduce the size of the inner circle
+                          height: 10.0, // Adjust this value to reduce the size of the inner circle
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.blueAccent,
 
-                  },) ,
+                            size: 15.0, // Adjust the size of the icon if needed
+                          ),
+                        ),
+                        onSubmit: () {
+                          Navigator.pushNamed(context, '/flashfeed_ai');
+                        },
+                        child: ShaderMask(
+                          shaderCallback: (Rect bounds) {
+                            return _gradient.createShader(bounds);
+                          },
+                          child: Center(
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "Ask FlashFeed AI",
+                                  style: TextStyle(
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.white, // This will not be visible due to ShaderMask
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
+
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(

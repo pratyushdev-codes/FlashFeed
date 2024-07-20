@@ -37,9 +37,13 @@ dependencies:
   cached_network_image: ^3.3.1
   webview_flutter: ^3.0.1
   intl: ^0.17.0
+  share: ^2.0.4
   flutter_launcher_icons: ^0.13.1
   flutter_gradient_app_bar: ^0.3.1
   shared_preferences: ^2.2.2
+  url_launcher: ^6.0.20
+  slide_to_act: ^2.0.2
+  font_awesome_flutter: ^10.7.0
 
 
 
@@ -85,6 +89,7 @@ flutter:
      - images/buis.jpg
      - images/intro.jpeg
      - images/intro.gif
+     - images/navbarimg.jpeg
      - images/News of the Day (1).png
 
 
