@@ -13,6 +13,7 @@ import 'package:FlashFeed/models/category_model.dart';
 import 'package:FlashFeed/models/slider_model.dart';
 import 'package:FlashFeed/services/data.dart';
 import 'package:FlashFeed/services/slider_data.dart';
+import 'package:slide_to_act/slide_to_act.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Home extends StatefulWidget {
@@ -251,6 +252,13 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 10.0),
                 SizedBox(height: 10),
+                Center(
+                  child:SlideAction(onSubmit: (){
+                    
+
+
+                  },) ,
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(
