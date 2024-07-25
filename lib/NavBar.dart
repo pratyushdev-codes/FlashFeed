@@ -34,7 +34,7 @@ class NavBar extends StatelessWidget {
                     ),
                   ),
                   accountEmail: const Text(
-                    'Breaking news, tailored just for you!',
+                    'Your News Feed.',
                     style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
                   decoration: const BoxDecoration(

@@ -15,6 +15,7 @@ import 'package:FlashFeed/services/data.dart';
 import 'package:FlashFeed/services/slider_data.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:FlashFeed/pages/flashfeed_ai.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class _HomeState extends State<Home> {
 
 
    Colors.blue.shade900,
-   Colors.orangeAccent,
+
  ]);
   @override
   void initState() {
@@ -252,7 +253,11 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
-                SizedBox(height: 17.0),
+                SizedBox(height: 13.0),
+                Center(
+                  child: buildIndicator(),
+                ),
+                SizedBox(height: 15.0),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -262,7 +267,7 @@ class _HomeState extends State<Home> {
                       child: SlideAction(
                         elevation: 8.5,
                         outerColor: Colors.white10,
-                        innerColor: Colors.white,
+                        innerColor: Colors.white70,
                         textColor: Colors.transparent, // Make text color transparent
                         text: "", // Remove text here
                         textStyle: TextStyle(
@@ -281,8 +286,12 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         onSubmit: () {
-                          Navigator.pushNamed(context, '/flashfeed_ai');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => FlashfeedAI()),
+                          );
                         },
+
                         child: ShaderMask(
                           shaderCallback: (Rect bounds) {
                             return _gradient.createShader(bounds);
@@ -294,7 +303,7 @@ class _HomeState extends State<Home> {
                                 Text(
                                   "Ask FlashFeed AI",
                                   style: TextStyle(
-                                    fontSize: 19.0,
+                                    fontSize: 20.0,
                                     fontWeight: FontWeight.w500,
                                     color: Colors.white, // This will not be visible due to ShaderMask
                                   ),
@@ -307,7 +316,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-
+                SizedBox(height: 10),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
                   child: Row(

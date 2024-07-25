@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-class FlashFeedAI extends StatelessWidget {
-  const FlashFeedAI({super.key});
-
+class FlashfeedAI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FlashFeed AI Page'),
+        title: Text('Flashfeed AI'),
       ),
-      body: const Center(
-        child: Text('Welcome to the FlashFeed AI Page!'),
+      body: Center(
+        child: Text('Welcome to Flashfeed AI!'),
       ),
     );
   }
