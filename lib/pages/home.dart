@@ -31,13 +31,13 @@ class _HomeState extends State<Home> {
   bool _loading = true;
   int activeIndex = 0;
   final ScrollController _scrollController = ScrollController();
- final LinearGradient _gradient= LinearGradient(colors: <Color>[
-   Colors.red,
+  final LinearGradient _gradient= LinearGradient(colors: <Color>[
+    Colors.red,
 
 
-   Colors.blue.shade900,
+    Colors.blue.shade900,
 
- ]);
+  ]);
   @override
   void initState() {
     super.initState();
