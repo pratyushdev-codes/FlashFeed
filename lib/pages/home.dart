@@ -288,7 +288,7 @@ class _HomeState extends State<Home> {
                         onSubmit: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => FlashfeedAI()),
+                            MaterialPageRoute(builder: (context) => ChatPage()),
                           );
                         },
 
