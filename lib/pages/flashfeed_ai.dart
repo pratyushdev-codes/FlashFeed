@@ -1,7 +1,8 @@
 import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
-import 'package:chatgpt_flutter_app/consts.dart';
+import 'package:FlashFeed/consts.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
+
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -49,12 +50,7 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(
-          0,
-          166,
-          126,
-          1,
-        ),
+        backgroundColor:Colors.blueAccent,
         title: const Text(
           'GPT Chat',
           style: TextStyle(
@@ -66,12 +62,7 @@ class _ChatPageState extends State<ChatPage> {
         currentUser: _user,
         messageOptions: const MessageOptions(
           currentUserContainerColor: Colors.black,
-          containerColor: Color.fromRGBO(
-            0,
-            166,
-            126,
-            1,
-          ),
+          containerColor: Colors.orangeAccent,
           textColor: Colors.white,
         ),
         onSend: (ChatMessage m) {
