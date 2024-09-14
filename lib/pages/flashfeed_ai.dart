@@ -3,7 +3,6 @@ import 'package:FlashFeed/consts.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 
-
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
@@ -50,20 +49,20 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:Colors.blueAccent,
+        backgroundColor: Theme.of(context).primaryColor, // Standard color
         title: const Text(
           'GPT Chat',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.orange, // Standard color
           ),
         ),
       ),
       body: DashChat(
         currentUser: _user,
         messageOptions: const MessageOptions(
-          currentUserContainerColor: Colors.black,
-          containerColor: Colors.orangeAccent,
-          textColor: Colors.white,
+          currentUserContainerColor: Colors.black, // Standard color
+          containerColor: Colors.orange, // Standard color
+          textColor: Colors.white, // Standard color
         ),
         onSend: (ChatMessage m) {
           getChatResponse(m);
@@ -79,8 +78,7 @@ class _ChatPageState extends State<ChatPage> {
       _messages.insert(0, m);
       _typingUsers.add(_gptChatUser);
     });
-    List<Map<String, dynamic>> messagesHistory =
-    _messages.reversed.toList().map((m) {
+    List<Map<String, dynamic>> messagesHistory = _messages.reversed.toList().map((m) {
       if (m.user == _user) {
         return Messages(role: Role.user, content: m.text).toJson();
       } else {

@@ -8,7 +8,7 @@ class ShowCategoryNews{
 
   Future<void> getCategoriesNews(String category) async {
     String url =
-        "https://newsapi.org/v2/top-headlines?country=in&category=general&apiKey=54750057c9694620a9109147b238936b";
+        "https://newsapi.org/v2/everything?q=$category&apiKey=8a5ec37e26f845dcb4c2b78463734448";
     var response = await http.get(Uri.parse(url)); // Corrected the syntax here
 
     var jsonData = jsonDecode(response.body);

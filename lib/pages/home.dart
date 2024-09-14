@@ -15,7 +15,7 @@ import 'package:FlashFeed/services/data.dart';
 import 'package:FlashFeed/services/slider_data.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:FlashFeed/pages/flashfeed_ai.dart';
+// import 'package:FlashFeed/pages/flashfeed_ai.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -136,66 +136,66 @@ class _HomeState extends State<Home> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RichText(
-                      text: TextSpan(
-                        style: TextStyle(
-                          fontSize: 19.5,
-                          color: Colors.white70,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: "Let's dive into ",
-                          ),
-                          TextSpan(
-                            text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
-                            style: TextStyle(
-                              color: Colors.blue, // Blue color for the day
-                            ),
-                          ),
-                          TextSpan(
-                            text: "headlines",
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 2.0),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    child: Material(
-                      elevation: 2.0,
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(width: 0.0), // Add white border
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white12,
-                              blurRadius: 10.0, // Adjust the blur radius to your liking
-                              spreadRadius: 0.4, // Adjust the spread radius to your liking
-                              // Adjust the offset if needed
-                            ),
-                          ],
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(29),
-                          child: Image.asset(
-                            "images/News of the Day (1).png",
-                            fit: BoxFit.cover,
-                            height: 120,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
+                // Center(
+                //   child: Padding(
+                //     padding: const EdgeInsets.all(8.0),
+                //     child: RichText(
+                //       text: TextSpan(
+                //         style: TextStyle(
+                //           fontSize: 19.5,
+                //           color: Colors.white70,
+                //           fontWeight: FontWeight.w700,
+                //         ),
+                //         children: [
+                //           TextSpan(
+                //             text: "Let's dive into ",
+                //           ),
+                //           TextSpan(
+                //             text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
+                //             style: TextStyle(
+                //               color: Colors.blue, // Blue color for the day
+                //             ),
+                //           ),
+                //           TextSpan(
+                //             text: "headlines",
+                //           ),
+                //         ],
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                // SizedBox(height: 2.0),
+                // Center(
+                //   child: Padding(
+                //     padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                //     child: Material(
+                //       elevation: 2.0,
+                //       borderRadius: BorderRadius.circular(30),
+                //       child: Container(
+                //         decoration: BoxDecoration(
+                //           borderRadius: BorderRadius.circular(30),
+                //           border: Border.all(width: 0.0), // Add white border
+                //           boxShadow: [
+                //             BoxShadow(
+                //               color: Colors.white12,
+                //               blurRadius: 10.0, // Adjust the blur radius to your liking
+                //               spreadRadius: 0.4, // Adjust the spread radius to your liking
+                //               // Adjust the offset if needed
+                //             ),
+                //           ],
+                //         ),
+                //         child: ClipRRect(
+                //           borderRadius: BorderRadius.circular(29),
+                //           child: Image.asset(
+                //             "images/News of the Day (1).png",
+                //             fit: BoxFit.cover,
+                //             height: 120,
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 SizedBox(height: 20.0),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -232,7 +232,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                SizedBox(height: 8.0),
+                SizedBox(height: 12.0),
                 CarouselSlider.builder(
                   itemCount: sliders.length,
                   itemBuilder: (context, index, realIndex) {
@@ -241,8 +241,8 @@ class _HomeState extends State<Home> {
                     return buildImage(res!, index, res1!);
                   },
                   options: CarouselOptions(
-                    height: 200,
-                    viewportFraction: 0.95,
+                    height: 230,
+                    viewportFraction: 0.97,
                     autoPlay: true,
                     enlargeCenterPage: true,
                     enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -253,69 +253,13 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
-                SizedBox(height: 13.0),
+                SizedBox(height:10.0),
                 Center(
                   child: buildIndicator(),
                 ),
                 SizedBox(height: 15.0),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 50.0, // Adjust this value to reduce the height of the slider
 
-                      child: SlideAction(
-                        elevation: 8.5,
-                        outerColor: Colors.white10,
-                        innerColor: Colors.white70,
-                        textColor: Colors.transparent, // Make text color transparent
-                        text: "", // Remove text here
-                        textStyle: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.transparent, // This will be overridden by the ShaderMask
-                        ),
-                        sliderButtonIcon: Container(
-                          width: 10.0, // Adjust this value to reduce the size of the inner circle
-                          height: 10.0, // Adjust this value to reduce the size of the inner circle
-                          child: Icon(
-                            Icons.arrow_forward,
-                            color: Colors.blueAccent,
 
-                            size: 15.0, // Adjust the size of the icon if needed
-                          ),
-                        ),
-                        onSubmit: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => ChatPage()),
-                          );
-                        },
-
-                        child: ShaderMask(
-                          shaderCallback: (Rect bounds) {
-                            return _gradient.createShader(bounds);
-                          },
-                          child: Center(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  "Ask FlashFeed AI",
-                                  style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white, // This will not be visible due to ShaderMask
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
                 SizedBox(height: 10),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -417,7 +361,7 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.only(left: 10.0),
           margin: EdgeInsets.only(top: 130.0),
           decoration: BoxDecoration(
-            color: Colors.black26,
+            color: Colors.black12,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10),
@@ -440,8 +384,8 @@ class _HomeState extends State<Home> {
     activeIndex: activeIndex,
     count: sliders.length,
     effect: SlideEffect(
-      dotWidth: 9,
-      dotHeight: 9,
+      dotWidth: 6,
+      dotHeight: 6,
       activeDotColor: Colors.blueAccent,
     ),
   );
