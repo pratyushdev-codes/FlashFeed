@@ -472,7 +472,7 @@ class BlogTitle extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: CachedNetworkImage(
                     imageUrl: imageUrl,
-                    height: 140,
+                    height: 180,
                     width: 145,
                     fit: BoxFit.cover,
                   ),
@@ -505,18 +505,20 @@ class BlogTitle extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 5.0),
+                    SizedBox(height: 10.0),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.white10, // Background color of the container
+                        color: Colors.black26, // Background color of the container
                         borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
+
                       ),
                       width: MediaQuery.of(context).size.width / 2,
+                      height: 40,
                       child: Row(
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.play_circle_fill, size: 50),
+                            icon: Icon(Icons.play_circle_fill, size: 20, color: Colors.white70),
                           ),
                           Expanded(
                             child: Lottie.asset(
