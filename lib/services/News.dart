@@ -1,6 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http; // Don't forget to import the http package!
 import 'package:FlashFeed/models/article_model.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+
+
+FlutterTts flutterTts =FlutterTts();
 
 class News {
   List<ArticleModel> news = [];
@@ -25,6 +29,14 @@ class News {
           news.add(articleModel); // Added the articleModel to the news list
         }
       });
+    }
+
+    Future<void> speak (String description) async{
+      await flutterTts.setLanguage("en-us");
+      await flutterTts.setPitch(1);
+      await flutterTts.setSpeechRate(0.8);
+      await flutterTts.speak(description);
+
     }
   }
 }

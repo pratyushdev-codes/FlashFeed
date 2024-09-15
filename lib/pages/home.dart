@@ -1,6 +1,8 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:FlashFeed/NavBar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -13,6 +15,7 @@ import 'package:FlashFeed/models/category_model.dart';
 import 'package:FlashFeed/models/slider_model.dart';
 import 'package:FlashFeed/services/data.dart';
 import 'package:FlashFeed/services/slider_data.dart';
+import 'package:lottie/lottie.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 // import 'package:FlashFeed/pages/flashfeed_ai.dart';
@@ -136,66 +139,66 @@ class _HomeState extends State<Home> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Center(
-                //   child: Padding(
-                //     padding: const EdgeInsets.all(8.0),
-                //     child: RichText(
-                //       text: TextSpan(
-                //         style: TextStyle(
-                //           fontSize: 19.5,
-                //           color: Colors.white70,
-                //           fontWeight: FontWeight.w700,
-                //         ),
-                //         children: [
-                //           TextSpan(
-                //             text: "Let's dive into ",
-                //           ),
-                //           TextSpan(
-                //             text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
-                //             style: TextStyle(
-                //               color: Colors.blue, // Blue color for the day
-                //             ),
-                //           ),
-                //           TextSpan(
-                //             text: "headlines",
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //   ),
-                // ),
-                // SizedBox(height: 2.0),
-                // Center(
-                //   child: Padding(
-                //     padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                //     child: Material(
-                //       elevation: 2.0,
-                //       borderRadius: BorderRadius.circular(30),
-                //       child: Container(
-                //         decoration: BoxDecoration(
-                //           borderRadius: BorderRadius.circular(30),
-                //           border: Border.all(width: 0.0), // Add white border
-                //           boxShadow: [
-                //             BoxShadow(
-                //               color: Colors.white12,
-                //               blurRadius: 10.0, // Adjust the blur radius to your liking
-                //               spreadRadius: 0.4, // Adjust the spread radius to your liking
-                //               // Adjust the offset if needed
-                //             ),
-                //           ],
-                //         ),
-                //         child: ClipRRect(
-                //           borderRadius: BorderRadius.circular(29),
-                //           child: Image.asset(
-                //             "images/News of the Day (1).png",
-                //             fit: BoxFit.cover,
-                //             height: 120,
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        style: TextStyle(
+                          fontSize: 19.5,
+                          color: Colors.white70,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Let's dive into ",
+                          ),
+                          TextSpan(
+                            text: "${DateFormat('EEEE').format(DateTime.now())}'s ", // Day of the week
+                            style: TextStyle(
+                              color: Colors.blue, // Blue color for the day
+                            ),
+                          ),
+                          TextSpan(
+                            text: "headlines",
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 2.0),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Material(
+                      elevation: 2.0,
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(width: 0.0), // Add white border
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.white12,
+                              blurRadius: 10.0, // Adjust the blur radius to your liking
+                              spreadRadius: 0.4, // Adjust the spread radius to your liking
+                              // Adjust the offset if needed
+                            ),
+                          ],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.asset(
+                            "images/News of the Day (1).png",
+                            fit: BoxFit.cover,
+                            height: 120,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(height: 20.0),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -311,7 +314,9 @@ class _HomeState extends State<Home> {
                       );
                     },
                   ),
+
                 ),
+
               ],
             ),
           ],
@@ -427,7 +432,7 @@ class CategoryTitle extends StatelessWidget {
                   categoryName,
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 15,
+                      fontSize: 17,
                       fontWeight: FontWeight.w600),
                 ),
               ),
@@ -500,6 +505,30 @@ class BlogTitle extends StatelessWidget {
                         ),
                       ),
                     ),
+                    SizedBox(height: 5.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white10, // Background color of the container
+                        borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
+                      ),
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.play_circle_fill, size: 50),
+                          ),
+                          Expanded(
+                            child: Lottie.asset(
+                              'images/Animation - 1726426159777.json',
+                              height: 70,
+                              animate: true,
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+
                   ],
                 ),
               ],
