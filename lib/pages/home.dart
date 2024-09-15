@@ -235,7 +235,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
-                SizedBox(height: 12.0),
+                SizedBox(height: 8.0),
                 CarouselSlider.builder(
                   itemCount: sliders.length,
                   itemBuilder: (context, index, realIndex) {
@@ -244,8 +244,8 @@ class _HomeState extends State<Home> {
                     return buildImage(res!, index, res1!);
                   },
                   options: CarouselOptions(
-                    height: 230,
-                    viewportFraction: 0.97,
+                    height: 200,
+                    viewportFraction: 0.95,
                     autoPlay: true,
                     enlargeCenterPage: true,
                     enlargeStrategy: CenterPageEnlargeStrategy.height,
@@ -256,12 +256,11 @@ class _HomeState extends State<Home> {
                     },
                   ),
                 ),
-                SizedBox(height:10.0),
+                SizedBox(height: 17.0),
                 Center(
                   child: buildIndicator(),
                 ),
-                SizedBox(height: 15.0),
-
+                SizedBox(height: 10.0),
 
                 SizedBox(height: 10),
                 Padding(
