@@ -4,16 +4,14 @@ import 'package:http/http.dart' as http;
 import 'package:FlashFeed/models/article_model.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-RxBool isSpeaking = false.obs;
-
-FlutterTts flutterTts = FlutterTts();
-
-class News {
+class News extends GetxController {
+  RxBool isSpeaking = false.obs;
+  FlutterTts flutterTts = FlutterTts();
   List<ArticleModel> news = [];
 
   Future<void> getNews() async {
     String url =
-        "https://newsapi.org/v2/everything?q=bitcoin&apiKey=76a443dc1c5945d591bf5a452b431990";
+        "https://newsapi.org/v2/everything?q=entertainment&general&buisness&technology&science&apiKey=ab736851528d409793eb3db0f1230abe";
     var response = await http.get(Uri.parse(url));
 
     var jsonData = jsonDecode(response.body);
@@ -34,19 +32,22 @@ class News {
     }
   }
 
-  // New speak method for text-to-speech
   Future<void> speak(String text) async {
     isSpeaking.value = true;
     await flutterTts.setLanguage("en-US");
     await flutterTts.setPitch(1.0);
     await flutterTts.setSpeechRate(0.4);
+
+    // Handle completion of speech
+    flutterTts.setCompletionHandler(() {
+      isSpeaking.value = false;
+    });
+
     await flutterTts.speak(text);
-    isSpeaking.value=false;
+  }
 
-    void stop() async{
-      await flutterTts.stop();
-      isSpeaking.value= false;
-
-    }
+  Future<void> stop() async {
+    await flutterTts.stop();
+    isSpeaking.value = false;
   }
 }

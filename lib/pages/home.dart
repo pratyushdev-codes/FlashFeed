@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -444,12 +445,15 @@ class CategoryTitle extends StatelessWidget {
   }
 }
 
+
 class BlogTitle extends StatelessWidget {
   final String imageUrl, title, desc, url;
   const BlogTitle({Key? key, required this.desc, required this.title, required this.imageUrl, required this.url}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    News newsController = Get.put(News());
+    final News newsController = Get.put(News());
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -480,6 +484,7 @@ class BlogTitle extends StatelessWidget {
                 ),
                 SizedBox(width: 9.0),
                 Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       width: MediaQuery.of(context).size.width / 2,
@@ -509,31 +514,42 @@ class BlogTitle extends StatelessWidget {
                     SizedBox(height: 10.0),
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.black26, // Background color of the container
-                        borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
-
+                        color: Colors.black26,
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       width: MediaQuery.of(context).size.width / 2,
                       height: 40,
                       child: Row(
                         children: [
-                          IconButton(
-                            onPressed: () {
-                              newsController.speak(desc ?? "No Description Available");
-                            },
-                            icon: Icon(Icons.play_circle_fill, size: 20, color: Colors.white70),
-                          ),
+                          Obx(() {
+                            bool speaking = newsController.isSpeaking.value;
+                            return IconButton(
+                              onPressed: () {
+                                if (speaking) {
+                                  newsController.stop();
+                                } else {
+                                  newsController.speak(desc ?? "No Description Available");
+                                }
+                              },
+                              icon: Icon(
+                                speaking
+                                    ? Icons.pause_circle_outline_outlined
+                                    : Icons.play_circle_fill,
+                                size: 20,
+                                color: Colors.white70,
+                              ),
+                            );
+                          }),
                           Expanded(
                             child: Lottie.asset(
-                              'images/Animation - 1726426159777.json',
+                              'images/Animation - 1726494815293.json',
                               height: 70,
-                              animate: false,
+                              animate: newsController.isSpeaking.value,
                             ),
-                          )
+                          ),
                         ],
                       ),
-                    )
-
+                    ),
                   ],
                 ),
               ],
