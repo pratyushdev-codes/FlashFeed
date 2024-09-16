@@ -19,6 +19,7 @@ import 'package:lottie/lottie.dart';
 import 'package:slide_to_act/slide_to_act.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 // import 'package:FlashFeed/pages/flashfeed_ai.dart';
+import 'package:get/get.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -448,6 +449,7 @@ class BlogTitle extends StatelessWidget {
   const BlogTitle({Key? key, required this.desc, required this.title, required this.imageUrl, required this.url}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    News newsController = Get.put(News());
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -516,14 +518,16 @@ class BlogTitle extends StatelessWidget {
                       child: Row(
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              newsController.speak(desc ?? "No Description Available");
+                            },
                             icon: Icon(Icons.play_circle_fill, size: 20, color: Colors.white70),
                           ),
                           Expanded(
                             child: Lottie.asset(
                               'images/Animation - 1726426159777.json',
                               height: 70,
-                              animate: true,
+                              animate: false,
                             ),
                           )
                         ],
