@@ -82,14 +82,14 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Flash",
+              "Sco",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
-              "Feed",
+              "ope",
               style: TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,
@@ -522,31 +522,32 @@ class BlogTitle extends StatelessWidget {
                       child: Row(
                         children: [
                           Obx(() {
-                            bool speaking = newsController.isSpeaking.value;
-                            return IconButton(
-                              onPressed: () {
-                                if (speaking) {
-                                  newsController.stop();
-                                } else {
-                                  newsController.speak(desc ?? "No Description Available");
-                                }
-                              },
-                              icon: Icon(
-                                speaking
-                                    ? Icons.pause_circle_outline_outlined
-                                    : Icons.play_circle_fill,
-                                size: 20,
-                                color: Colors.white70,
-                              ),
-                            );
-                          }),
-                          Expanded(
-                            child: Lottie.asset(
-                              'images/Animation - 1726494815293.json',
-                              height: 70,
-                              animate: newsController.isSpeaking.value,
-                            ),
-                          ),
+                    bool speaking = newsController.isSpeaking.value;
+                    return IconButton(
+                    onPressed: () {
+                    if (speaking) {
+                    newsController.stop();
+                    } else {
+                    newsController.speak(desc ?? "No Description Available");
+                    }
+                    },
+                    icon: Icon(
+                    speaking
+                    ? Icons.pause_circle_outline_outlined
+                        : Icons.play_circle_fill,
+                    size: 20,
+                    color: Colors.white70,
+                    ),
+                    );
+                    }),
+        Expanded(
+          child: Lottie.asset(
+            'images/Animation - 1726494815293.json',
+            height: 70,
+            animate: newsController.isSpeaking.value,
+          ),
+        ),
+
                         ],
                       ),
                     ),
